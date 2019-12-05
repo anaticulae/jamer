@@ -1,0 +1,12 @@
+releases
+========
+
+Upcomming releases must be planned here. See unplanned features in
+:ref:`backlog` to create next release plan.
+
+current
+-------
+
+.. toctree::
+  :maxdepth: 1
+
