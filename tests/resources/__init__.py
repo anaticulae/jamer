@@ -13,4 +13,9 @@ import jam
 
 RESOURCES = os.path.join(jam.ROOT, 'tests/resources')
 
-REQUIRED_RESOURCES = []
+MASTER = os.path.join(RESOURCES, 'master')
+MASTER_72PAGES = os.path.join(MASTER, 'page_72_noimages_toc.pdf')
+
+REQUIRED_RESOURCES = [
+    MASTER_72PAGES,
+]
