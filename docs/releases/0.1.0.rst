@@ -1,0 +1,49 @@
+
+.. _0_1_0:
+
+RP 0.1.0
+========
+
+cli
+---
+
+* [ ] add command line interface which copies, changes and write pdf file
+  from `source` to `sink`.
+
+remove pages
+------------
+
+* [ ] add --delete to remove serval pages
+
+.. code-block:: bash
+
+    jam -i test.pdf -o directory --delete=0,3,5
+
+switch pages
+------------
+
+* [ ] add --switch to switch pages with themself
+
+    * [ ] support single approach
+    * [ ] support list approach 0,3|4,5
+
+* [ ] validate cmdline input
+
+.. code-block:: bash
+
+    jam -i test.pdf -o directory --switch=(0,3) --switch=(5,6)
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Your code has been rated at 8.67/10
+* Total coverage: 00.00%
+
+after
+~~~~~
+
+* Your code has been rated at X.XX/10
+* Total coverage: XX.XX%
