@@ -29,6 +29,7 @@ def test_run_external(cmd, monkeypatch):
     ['-i', tests.resources.MASTER_72PAGES, '--remove'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:X'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove', '1000'],
+    ['-i', tests.resources.MASTER_72PAGES, '--switch', 'notasplit'],
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run_external_failure(cmd, monkeypatch):
@@ -47,3 +48,30 @@ def test_run_remove(testdir, monkeypatch):
 
     pagenumbers = jam.pdf.pagenumber(outpath)
     assert pagenumbers == 62
+
+
+@pytest.mark.parametrize('raw, before, after', [
+    ('0,1|10,20', [0, 1, 10, 20], [1, 0, 20, 10]),
+    ('10,20', [10, 20], [20, 10]),
+])
+def test_run_switch(testdir, monkeypatch, raw, before, after):
+    root = str(testdir)
+
+    cmd = ['-i', tests.resources.MASTER_72PAGES, '--switch', raw]
+    tests.run_success(cmd, monkeypatch=monkeypatch)
+
+    _, name = os.path.split(tests.resources.MASTER_72PAGES)
+    outpath = os.path.join(root, name)
+    assert os.path.exists(outpath), str(outpath)
+
+    pagenumbers = jam.pdf.pagenumber(outpath)
+    assert pagenumbers == 72
+
+    hashed = jam.pdf.hashcontent(tests.resources.MASTER_72PAGES, before)
+
+    # ensure that page flip does work
+    after_hashed = jam.pdf.hashcontent(outpath, after)
+    assert after_hashed == hashed, 'switch does not work'
+
+    after_hashed = jam.pdf.hashcontent(outpath, before)
+    assert after_hashed != hashed

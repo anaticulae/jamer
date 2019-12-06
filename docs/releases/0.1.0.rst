@@ -7,7 +7,7 @@ RP 0.1.0
 cli
 ---
 
-* [ ] add command line interface which copies, changes and writes pdf file
+* [x] add command line interface which copies, changes and writes pdf file
   from `source` to `sink`.
 
 remove pages
@@ -22,12 +22,12 @@ remove pages
 switch pages
 ------------
 
-* [ ] add --switch to switch pages with themself
+* [x] add --switch to switch pages with themself
 
-    * [ ] support single approach
-    * [ ] support list approach 0,3|4,5
+    * [x] support single approach
+    * [x] support list approach 0,3|4,5
 
-* [ ] validate cmdline input
+* [x] validate cmdline input
 
 .. code-block:: bash
 

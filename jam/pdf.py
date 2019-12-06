@@ -56,12 +56,24 @@ def switch(path: str, pages: list) -> str:
     return outpath
 
 
-def hashcontent(path: str) -> int:
-    """Determine hash of textual content of document stored in `path`"""
+def hashcontent(path: str, pages=None) -> int:
+    """Determine hash of textual content of document stored in `path`.
+
+    Args:
+        path(str): path to pdf file to run hash for.
+        pages(list): selected pages to compute hash. If None all pages
+                     are hashed.
+    Returns:
+        Common hash for selected content.
+    """
+    assert os.path.isfile(path), str(path)
+    if isinstance(pages, int):
+        pages = [pages]
     textcount = []
     with open(path, mode='rb') as source:
         reader = PyPDF2.PdfFileReader(stream=source)
-        for number in range(reader.getNumPages()):
+        selected = range(reader.getNumPages()) if pages is None else pages
+        for number in selected:
             page = reader.getPage(number)
             with contextlib.suppress(KeyError):
                 textcontent = page['/Resources']['/Font']
