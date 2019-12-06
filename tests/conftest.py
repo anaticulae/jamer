@@ -8,8 +8,6 @@ from tests.resources.update import sync_resources
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-# TODO: Ensure that tests waits before this process is ready
-
 if not 'PYTEST_XDIST_WORKER' in os.environ:
     # master process only
     # ensure to avoid race condition if more than one thread tries to
