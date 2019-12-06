@@ -6,3 +6,24 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+import functools
+
+import utila
+
+import jam
+import jam.cli
+
+#pylint: disable=invalid-name
+run_success = functools.partial(
+    utila.run_command,
+    main=jam.cli.main,
+    process=jam.PACKAGE,
+    success=True,
+)
+
+run_failure = functools.partial(
+    utila.run_command,
+    main=jam.cli.main,
+    process=jam.PACKAGE,
+    success=False,
+)
