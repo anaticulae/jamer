@@ -32,7 +32,7 @@ def main():
     )
     args = utila.parse(parser)
     inpath, outpath = determine_inputoutput(args)
-    validated = validate_resources(inpath, outpath, args)
+    validated = validate_resources(inpath, args)
     if validated:
         return validated
 
@@ -62,14 +62,7 @@ def determine_inputoutput(args: dict):
     return inpath, outpath
 
 
-def validate_resources(inpath: str, outpath: str, args: dict):
-    if not inpath or not os.path.isfile(inpath) or not inpath.endswith('.pdf'):
-        utila.error(f'require valid inpath, got: {inpath}')
-        return utila.INVALID_COMMAND
-    if not outpath.endswith('.pdf') and not os.path.exists(outpath):
-        # check that directory to write exists
-        utila.error(f'outpath does not exists: {outpath}')
-        return utila.INVALID_COMMAND
+def validate_resources(inpath: str, args: dict):
     pages = extract_pages(args)
     if pages:
         if not PyPDF2.PageRange.valid(pages):
