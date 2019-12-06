@@ -75,3 +75,15 @@ def test_run_switch(testdir, monkeypatch, raw, before, after):
 
     after_hashed = jam.pdf.hashcontent(outpath, before)
     assert after_hashed != hashed
+
+
+def test_run_remove_to_output(testdir, monkeypatch):
+    root = str(testdir)
+    outpath = os.path.join(root, 'removed.pdf')
+
+    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --remove 0:10'
+    tests.run_success(cmd, monkeypatch=monkeypatch)
+
+    assert os.path.exists(outpath), str(outpath)
+    pagenumbers = jam.pdf.pagenumber(outpath)
+    assert pagenumbers == 62

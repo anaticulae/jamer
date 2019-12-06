@@ -31,10 +31,7 @@ def main():
         pages=False,
     )
     args = utila.parse(parser)
-    inpath, outpath = utila.sources(args, singleinput=True)
-    if isinstance(inpath, list):
-        inpath = inpath[0]
-
+    inpath, outpath = determine_inputoutput(args)
     validated = validate_resources(inpath, outpath, args)
     if validated:
         return validated
@@ -49,6 +46,20 @@ def main():
 
     result = jam.cli.operation.work(inpath, outpath, pages, args)
     return result
+
+
+def determine_inputoutput(args: dict):
+    # support single input and output file
+    outpath = args['output']
+    if outpath and outpath.endswith('.pdf'):
+        # single output file
+        del args['output']
+        inpath, _ = utila.sources(args, singleinput=True)
+    else:
+        inpath, outpath = utila.sources(args, singleinput=True)
+    # support only one input
+    inpath = inpath[0] if isinstance(inpath, list) else inpath
+    return inpath, outpath
 
 
 def validate_resources(inpath: str, outpath: str, args: dict):
