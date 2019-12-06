@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import PyPDF2
 import utila
 
@@ -14,11 +16,13 @@ import jam
 
 
 def pagenumber(path: str) -> int:
+    assert os.path.isfile(path), str(path)
     loaded = PyPDF2.PdfFileReader(stream=open(path, mode='rb'))
     return loaded.getNumPages()
 
 
 def remove(path, pages: tuple) -> str:
+    assert os.path.isfile(path), str(path)
     numbers = pagenumber(path)
     hold = [item for item in range(numbers) if item not in pages]
     result = select(path, hold)
@@ -26,6 +30,7 @@ def remove(path, pages: tuple) -> str:
 
 
 def select(path: str, pages: tuple) -> str:
+    assert os.path.isfile(path), str(path)
     writer = PyPDF2.PdfFileWriter()
     with open(path, mode='rb') as source:
         reader = PyPDF2.PdfFileReader(stream=source)
