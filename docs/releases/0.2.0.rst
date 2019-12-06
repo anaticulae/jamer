@@ -1,0 +1,43 @@
+
+.. _0_2_0:
+
+RP 0.2.0
+========
+
+script file
+-----------
+
+* [ ] support python scripts as input to change attributes described below
+
+fonts
+-----
+
+* [ ] enable to change font size of text data via script file
+
+* [ ] enable to change font face
+
+* [ ] enable to change font style(bold)
+
+text
+----
+
+* [ ] add ability to change text content
+
+* [ ] enable remove text line
+
+* [ ] enable to move text line
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Your code has been rated at 10.00/10
+* Total coverage: 98.92%
+
+after
+~~~~~
+
+* Your code has been rated at XX.XX/10
+* Total coverage: XX.XX%
