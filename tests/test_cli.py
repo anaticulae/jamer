@@ -27,8 +27,8 @@ def test_run_external(cmd, monkeypatch):
 @pytest.mark.parametrize('cmd', [
     ['-i', 'filedoesnotexists'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove'],
-    ['-i', tests.resources.MASTER_72PAGES, '--remove', '--pages', '0:X'],
-    ['-i', tests.resources.MASTER_72PAGES, '--remove', '--pages', '1000'],
+    ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:X'],
+    ['-i', tests.resources.MASTER_72PAGES, '--remove', '1000'],
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run_external_failure(cmd, monkeypatch):
@@ -38,7 +38,7 @@ def test_run_external_failure(cmd, monkeypatch):
 def test_run_remove(testdir, monkeypatch):
     root = str(testdir)
 
-    cmd = ['-i', tests.resources.MASTER_72PAGES, '--remove', '--pages', '0:10']
+    cmd = ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:10']
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
     _, name = os.path.split(tests.resources.MASTER_72PAGES)

@@ -14,12 +14,15 @@ import jam.cli
 import jam.pdf
 
 CMD = [
-    utila.cli.Flag('--remove', message='remove defined pages out of document'),
+    utila.cli.Parameter(
+        longcut='--remove',
+        message='remove defined pages out of document',
+    ),
 ]
 
 
-def work(inpath: str, outpath: str, pages, args) -> int:
-    if args['remove']:
+def work(inpath: str, outpath: str, pages, args: dict) -> int:
+    if args['--remove']:
         remove(inpath, outpath, pages)
     return utila.SUCCESS
 

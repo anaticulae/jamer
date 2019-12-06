@@ -28,14 +28,14 @@ def main():
         outputparameter=True,
         inputparameter=True,
         prefix=False,
-        pages=True,
+        pages=False,
     )
     args = utila.parse(parser)
     inpath, outpath = utila.sources(args, singleinput=True)
     if isinstance(inpath, list):
         inpath = inpath[0]
 
-    validated = validate_resources(inpath, outpath, pages=args['pages'])
+    validated = validate_resources(inpath, outpath, args)
     if validated:
         return validated
 
@@ -43,12 +43,15 @@ def main():
         _, name = os.path.split(inpath)
         outpath = os.path.join(outpath, name)
 
-    pages = parse_pages(args['pages'])
+    pages = extract_pages(args)
+    if pages:
+        pages = parse_pages(pages)
+
     result = jam.cli.operation.work(inpath, outpath, pages, args)
     return result
 
 
-def validate_resources(inpath: str, outpath: str, pages: str):
+def validate_resources(inpath: str, outpath: str, args: dict):
     if not inpath or not os.path.isfile(inpath) or not inpath.endswith('.pdf'):
         utila.error(f'require valid inpath, got: {inpath}')
         return utila.INVALID_COMMAND
@@ -56,17 +59,22 @@ def validate_resources(inpath: str, outpath: str, pages: str):
         # check that directory to write exists
         utila.error(f'outpath does not exists: {outpath}')
         return utila.INVALID_COMMAND
-    if pages is None:
-        utila.error('require --pages parameter')
-        return utila.INVALID_COMMAND
-    if not PyPDF2.PageRange.valid(pages):
-        utila.error(f'invalid --pages `{pages}` parameter')
-        return utila.INVALID_COMMAND
-    pages = parse_pages(pages)
-    if not valid_range(inpath, pages):
-        utila.error(f'--pages `{pages}` out of range')
-        return utila.INVALID_COMMAND
+    pages = extract_pages(args)
+    if pages:
+        if not PyPDF2.PageRange.valid(pages):
+            utila.error(f'invalid --pages `{pages}` parameter')
+            return utila.INVALID_COMMAND
+        pages = parse_pages(pages)
+        if not valid_range(inpath, pages):
+            utila.error(f'--pages `{pages}` out of range')
+            return utila.INVALID_COMMAND
     return utila.SUCCESS
+
+
+def extract_pages(args):
+    if args['--remove']:
+        return args['--remove']
+    return None
 
 
 def valid_range(path: str, pages: tuple):
