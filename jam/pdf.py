@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
 import os
 
 import PyPDF2
@@ -41,3 +42,28 @@ def select(path: str, pages: tuple) -> str:
         with open(outpath, 'wb') as sink:
             writer.write(sink)
     return outpath
+
+
+def switch(path: str, pages: list) -> str:
+    assert os.path.isfile(path), str(path)
+    assert all([len(item) == 2 for item in pages]), 'require list of tuples'
+    numbers = pagenumber(path)
+    origin = list(range(numbers))
+    for flip_a, flip_b in pages:
+        origin[flip_a], origin[flip_b] = origin[flip_b], origin[flip_a]
+    flipped = tuple(origin)
+    outpath = select(path, flipped)
+    return outpath
+
+
+def hashcontent(path: str) -> int:
+    """Determine hash of textual content of document stored in `path`"""
+    textcount = []
+    with open(path, mode='rb') as source:
+        reader = PyPDF2.PdfFileReader(stream=source)
+        for number in range(reader.getNumPages()):
+            page = reader.getPage(number)
+            with contextlib.suppress(KeyError):
+                textcontent = page['/Resources']['/Font']
+                textcount.append(len(textcontent))
+    return hash(str(textcount))
