@@ -45,5 +45,5 @@ before
 after
 ~~~~~
 
-* Your code has been rated at X.XX/10
-* Total coverage: XX.XX%
+* Your code has been rated at 10.00/10
+* Total coverage: 98.92%
