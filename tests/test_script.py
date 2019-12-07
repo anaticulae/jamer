@@ -46,7 +46,13 @@ def test_script_master(testdir):
     script = os.path.join(root, 'master.py')
     utila.file_create(script, MASTER)
 
-    completed = jam.script.run(script, document=tests.resources.MASTER_72PAGES)
+    outpath = os.path.join(root, 'output.pdf')
+
+    completed = jam.script.run(
+        script,
+        document=tests.resources.MASTER_72PAGES,
+        outpath=outpath,
+    )
     assert completed == utila.SUCCESS
 
 
@@ -60,5 +66,11 @@ def test_script_execution(code, expected, testdir):
     script = os.path.join(root, 'source.py')
     utila.file_create(script, code)
 
-    completed = jam.script.run(script, document=tests.resources.MASTER_72PAGES)
+    outpath = os.path.join(root, 'output.pdf')
+
+    completed = jam.script.run(
+        script,
+        document=tests.resources.MASTER_72PAGES,
+        outpath=outpath,
+    )
     assert completed == expected

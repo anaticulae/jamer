@@ -16,6 +16,10 @@ RESOURCES = os.path.join(jam.ROOT, 'tests/resources')
 MASTER = os.path.join(RESOURCES, 'master')
 MASTER_72PAGES = os.path.join(MASTER, 'page_72_noimages_toc.pdf')
 
+EXAMPLE = os.path.join(jam.ROOT, 'tests/example')
+HELLO_WORLD = os.path.join(EXAMPLE, 'helloworld.py')
+
 REQUIRED_RESOURCES = [
     MASTER_72PAGES,
+    HELLO_WORLD,
 ]

@@ -24,6 +24,7 @@ example
     del page_0.text_1
 """
 import dataclasses
+import os
 import runpy
 
 import PyPDF2
@@ -38,7 +39,7 @@ class Status:
     error: bool = False
 
 
-def run(script: str, document: str) -> int:
+def run(script: str, document: str, outpath: str = None) -> int:
     doc = Document(document)
     status = Status()
     environment = {'__status': status}
@@ -60,6 +61,7 @@ def run(script: str, document: str) -> int:
 class Document:
 
     def __init__(self, source: str):
+        assert os.path.isfile(source), str(source)
         self.loaded = PyPDF2.PdfFileReader(stream=open(source, mode='rb'))
         self.update_accessor()
 

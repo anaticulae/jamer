@@ -12,6 +12,7 @@ import utila.cli
 
 import jam.cli
 import jam.pdf
+import jam.script
 
 CMD = [
     utila.cli.Parameter(
@@ -22,6 +23,10 @@ CMD = [
         longcut='--switch',
         message='switch pages with each other',
     ),
+    utila.cli.Parameter(
+        longcut='--script',
+        message='run modification script on resource',
+    ),
 ]
 
 
@@ -31,6 +36,8 @@ def work(inpath: str, outpath: str, pages, args: dict) -> int:
         result += remove(inpath, outpath, pages)
     if args['--switch']:
         result += switch(inpath, outpath, args['--switch'])
+    if args['--script']:
+        result += script(inpath, outpath, args['--script'])
     return result
 
 
@@ -50,6 +57,14 @@ def switch(source: str, sink: str, selected: str) -> int:
 
     switched = jam.pdf.switch(source, parsed)
     utila.copy_content(switched, sink)
+    utila.log('completed')
+    return utila.SUCCESS
+
+
+def script(source: str, sink: str, scriptpath: str) -> int:
+    failure = jam.script.run(script=scriptpath, document=source, outpath=sink)
+    if failure:
+        return failure
     utila.log('completed')
     return utila.SUCCESS
 
