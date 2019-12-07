@@ -6,8 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""todo
-====
+"""script
+======
+
+The script environment enables the possiblity to modify a pdf file.
 
 example
 -------
