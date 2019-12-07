@@ -64,6 +64,9 @@ def determine_inputoutput(args: dict):
 
 def validate_resources(inpath: str, args: dict):
     pages = extract_pages(args)
+    if not os.path.isfile(inpath):
+        utila.error(f'require valid pdf file as input, got: {inpath}')
+        return utila.INVALID_COMMAND
     if pages:
         if not PyPDF2.PageRange.valid(pages):
             utila.error(f'invalid --pages `{pages}` parameter')

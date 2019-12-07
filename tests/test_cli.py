@@ -26,6 +26,7 @@ def test_run_external(cmd, monkeypatch):
 
 @pytest.mark.parametrize('cmd', [
     ['-i', 'filedoesnotexists.pdf'],
+    ['-i', tests.resources.MASTER, '--remove', '1'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:X'],
     ['-i', tests.resources.MASTER_72PAGES, '--remove', '1000'],
