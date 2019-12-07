@@ -22,10 +22,16 @@ example
     page_0.text_3.bold = True
 
     del page_0.text_1
+
+.. note::
+
+    Importing `runpy` leads to internal pylint error.
+
+    Solution: use importlib
 """
 import dataclasses
+import importlib
 import os
-import runpy
 
 import PyPDF2
 import utila
@@ -47,7 +53,9 @@ def run(script: str, document: str, outpath: str = None) -> int:
 
     script = scriptfile(script)
     try:
-        result = runpy.run_path(
+        # NOTE: USE IMPORT AGAIN AFTER FIXING/HAVING NEW PYLINT VERSION
+        runpy = importlib.import_module('runpy')
+        runpy.run_path(
             script,
             init_globals=environment,
             run_name=None,
