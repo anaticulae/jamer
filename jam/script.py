@@ -37,6 +37,7 @@ import PyPDF2
 import utila
 
 import jam
+import jam.pdf
 
 
 @dataclasses.dataclass
@@ -45,7 +46,7 @@ class Status:
     error: bool = False
 
 
-def run(script: str, document: str, outpath: str = None) -> int:
+def run(script: str, document: str, outpath: str) -> int:
     doc = Document(document)
     status = Status()
     environment = {'__status': status}
@@ -60,6 +61,7 @@ def run(script: str, document: str, outpath: str = None) -> int:
             init_globals=environment,
             run_name=None,
         )
+        jam.pdf.write(outpath, doc.loaded)
     except SyntaxError as error:
         utila.error(error)
         return utila.FAILURE

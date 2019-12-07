@@ -54,6 +54,7 @@ def test_script_master(testdir):
         outpath=outpath,
     )
     assert completed == utila.SUCCESS
+    assert os.path.exists(outpath), str(outpath)
 
 
 @pytest.mark.parametrize('code, expected', [

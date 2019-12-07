@@ -102,8 +102,14 @@ def test_run_remove_to_output(testdir, monkeypatch):
 
 
 def test_run_script(testdir, monkeypatch, capsys):
-    cmd = f'-i {tests.resources.MASTER_72PAGES} --script {tests.resources.HELLO_WORLD}'
+    root = str(testdir)
+    outpath = os.path.join(root, 'abc.pdf')
+
+    cmd = (f'-i {tests.resources.MASTER_72PAGES} -o {outpath} '
+           f'--script {tests.resources.HELLO_WORLD}')
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
     captured = capsys.readouterr().out
     assert 'hello world' in captured
+
+    assert os.path.exists(outpath), str(outpath)

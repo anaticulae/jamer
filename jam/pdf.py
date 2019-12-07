@@ -56,6 +56,15 @@ def switch(path: str, pages: list) -> str:
     return outpath
 
 
+def write(path: str, source):
+    writer = PyPDF2.PdfFileWriter()
+    for number in range(source.getNumPages()):
+        page = source.getPage(number)
+        writer.addPage(page)
+    with open(path, 'wb') as sink:
+        writer.write(sink)
+
+
 def hashcontent(path: str, pages=None) -> int:
     """Determine hash of textual content of document stored in `path`.
 
