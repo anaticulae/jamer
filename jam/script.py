@@ -75,39 +75,20 @@ class Document:
     def __init__(self, source: str):
         assert os.path.isfile(source), str(source)
         self.loaded = PyPDF2.PdfFileReader(stream=open(source, mode='rb'))
-        self.update_accessor()
-
-    def update_accessor(self):
-        print('update accessor')
-        pass
 
     def pages(self):
         return {
-            f'page_{number}': 'hello'
+            f'page_{number}': PageHook(self.loaded.getPage(number))
             for number in range(self.loaded.getNumPages())
         }
 
-    # def __setattr__(self, instance, value):
-    #     try:
-    #         print(instance)
-    #         print(value)
-    #         print()
-    #         self.data[instance] = value
-    #         assert any([
-    #             instance.startswith('page_'),
-    #             instance.startswith('final'),
-    #         ]), instance
-    #     except AttributeError:
-    #         super().__setattr__('data', {})
 
-    # def __getattr__(self, name):
-    #     datadict = super().__getattribute__('data')
-    #     return datadict[name]
+class PageHook:
 
+    def __init__(self, page: PyPDF2.pdf.PageObject):
+        self.page = page
 
-class Text:
-
-    def __init__(self):
+    def __delattr__(self, name):
         pass
 
 

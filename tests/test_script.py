@@ -75,3 +75,14 @@ def test_script_execution(code, expected, testdir):
         outpath=outpath,
     )
     assert completed == expected
+
+
+@pytest.mark.parametrize('path', [
+    pytest.param(tests.resources.SCRIPT_SIMPLE_CHANGE, id='change'),
+    pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
+])
+def test_script_execution_simple_changes(path, testdir, monkeypatch):
+    root = str(testdir)
+    outpath = os.path.join(root, 'changed.pdf')
+    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --script {path}'
+    tests.run_success(cmd, monkeypatch=monkeypatch)
