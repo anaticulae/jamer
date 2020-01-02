@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v0.1.1
+
+### Feature
+
+* add PageHook to support deleting pages (d299690b92c8)
+* write result of processed --script to -o (532caeb7ed27)
+* add --script parameter to run script on given resource (79d11232b585)
+* ensure to have a file as input -i (ffbe63fe7cd6)
+* add first draft to run internal python source code (7478378a027b)
+
+### Fix
+
+* add workaround to avoid pylint collecting error (3162eda09b93)
+
+### Documentation
+
+* Happy New Year! (3e89b638692e)
+* extend script module description (2109487fc435)
+
 ## v0.1.0
 
 ### Feature
