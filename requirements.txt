@@ -1,5 +1,5 @@
-utila==1.13.1
+utila==1.14.0
 
 PyPDF2==1.26.1
 
-power==0.6.11
+power==0.6.12
