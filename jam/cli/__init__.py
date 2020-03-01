@@ -23,12 +23,14 @@ def main():
     commands.extend(jam.cli.operation.CMD)
 
     parser = utila.cli.create_parser(
-        commands,
+        todo=commands,
+        config=utila.ParserConfiguration(
+            inputparameter=True,
+            outputparameter=True,
+            pages=False,
+            prefix=False,
+        ),
         version=jam.__version__,
-        outputparameter=True,
-        inputparameter=True,
-        prefix=False,
-        pages=False,
     )
     args = utila.parse(parser)
     inpath, outpath = determine_inputoutput(args)
