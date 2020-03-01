@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.7
+
+### Fix
+
+* rename files to avoid collecting by doctest (bb808461a8c0)
+
 ## v0.1.6
 
 ## v0.1.5
