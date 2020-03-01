@@ -19,8 +19,8 @@ MASTER_72PAGES = os.path.join(MASTER, 'page_72_noimages_toc.pdf')
 EXAMPLE = os.path.join(jam.ROOT, 'tests/example')
 HELLO_WORLD = os.path.join(EXAMPLE, 'helloworld.py')
 
-SCRIPT_SIMPLE_DELETE = os.path.join(EXAMPLE, 'simpledelete.py')
-SCRIPT_SIMPLE_CHANGE = os.path.join(EXAMPLE, 'simplechange.py')
+SCRIPT_SIMPLE_DELETE = os.path.join(EXAMPLE, 'simpledelete.pys')
+SCRIPT_SIMPLE_CHANGE = os.path.join(EXAMPLE, 'simplechange.pys')
 
 REQUIRED_RESOURCES = [
     HELLO_WORLD,
