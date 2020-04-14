@@ -8,7 +8,7 @@
 #==============================================================================
 import os
 
-__version__ = '0.1.19'
+__version__ = '0.1.20'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PACKAGE = 'jam'
