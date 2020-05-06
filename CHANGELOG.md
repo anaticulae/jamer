@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* extend public API (00bf2e67a6a8)
+* add method to create pdf file with empty blank pages (4c6b0dda8797)
+
 ## v0.1.23
 
 ## v0.1.22
