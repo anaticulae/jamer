@@ -6,7 +6,7 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""script
+"""Script
 ======
 
 The script environment enables the possiblity to modify a pdf file.
@@ -93,7 +93,7 @@ class PageHook:
 
 
 def scriptfile(path: str) -> str:
-    """Create scriptfile for exection and surround code with error
+    """Create scriptfile for execution and surround code with error
     handler.
 
     Args:
