@@ -8,6 +8,9 @@
 #==============================================================================
 import os
 
+from jam.freestyle import write_blank_pdf
+from jam.pdf import pagenumber
+
 __version__ = '0.1.23'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
