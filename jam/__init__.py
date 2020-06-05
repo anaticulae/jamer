@@ -18,7 +18,7 @@ from jam.pdf import write
 from jam.script import run
 from jam.script import scriptfile
 
-__version__ = '0.2.5'
+__version__ = '0.2.6'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PACKAGE = 'jam'
