@@ -1,6 +1,7 @@
 import os
 
 import utila
+import utilatest
 
 from tests.resources import REQUIRED_RESOURCES
 from tests.resources.update import install_requirements
@@ -13,7 +14,7 @@ if not 'PYTEST_XDIST_WORKER' in os.environ:
     # ensure to avoid race condition if more than one thread tries to
     # install or use rawmaker
 
-    if 'GENERATE' in os.environ or utila.test.LONGRUN:
+    if 'GENERATE' in os.environ or utilatest.LONGRUN:
         utila.log('install requirements')
         install_requirements()
 

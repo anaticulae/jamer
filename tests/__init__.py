@@ -8,21 +8,21 @@
 #==============================================================================
 import functools
 
-import utila
+import utilatest
 
 import jam
 import jam.cli
 
 #pylint: disable=invalid-name
 run_success = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=jam.cli.main,
     process=jam.PACKAGE,
     success=True,
 )
 
 run_failure = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=jam.cli.main,
     process=jam.PACKAGE,
     success=False,

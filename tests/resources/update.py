@@ -8,13 +8,14 @@
 # =============================================================================
 
 import utila
+import utilatest
 
 import jam
 import tests
 
 
 def install_requirements():
-    utila.clean_install(jam.ROOT, jam.PACKAGE)
+    utilatest.clean_install(jam.ROOT, jam.PACKAGE)
 
 
 def sync_resources():
