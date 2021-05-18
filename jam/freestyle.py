@@ -11,10 +11,10 @@ import PyPDF2
 
 
 def write_blank_pdf(
-        numbers: int,
-        path: str,
-        width: float = 768,
-        height: float = 1024,
+    numbers: int,
+    path: str,
+    width: float = 768,
+    height: float = 1024,
 ):
     """Create a pdf file which contains only white, blank pages."""
     assert numbers >= 1, str(numbers)
