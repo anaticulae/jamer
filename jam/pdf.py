@@ -58,10 +58,13 @@ def switch(path: str, pages: list = None) -> str:
     return outpath
 
 
-def write(path: str, source):
+def write(path: str, source, remove_empty: bool = False):
     writer = PyPDF2.PdfFileWriter()
     for number in range(source.getNumPages()):
         page = source.getPage(number)
+        if remove_empty and not page.extractText().strip():
+            # skip empty page
+            continue
         writer.addPage(page)
     with open(path, 'wb') as sink:
         writer.write(sink)
