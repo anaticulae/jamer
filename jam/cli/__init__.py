@@ -19,11 +19,9 @@ import jam.pdf
 
 @utila.saveme
 def main():
-    commands = []
-    commands.extend(jam.cli.operation.CMD)
-
+    cmds = list(jam.cli.operation.CMD)
     parser = utila.cli.create_parser(
-        todo=commands,
+        todo=cmds,
         config=utila.ParserConfiguration(
             inputparameter=True,
             outputparameter=True,
