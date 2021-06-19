@@ -13,6 +13,8 @@ import jam
 
 RESOURCES = os.path.join(jam.ROOT, 'tests/resources')
 
+SCALED_PDF = os.path.join(RESOURCES, 'scaled.pdf')
+
 MASTER = os.path.join(RESOURCES, 'master')
 
 EXAMPLE = os.path.join(jam.ROOT, 'tests/example')
@@ -25,4 +27,5 @@ REQUIRED_RESOURCES = [
     HELLO_WORLD,
     SCRIPT_SIMPLE_CHANGE,
     SCRIPT_SIMPLE_DELETE,
+    SCALED_PDF,
 ]
