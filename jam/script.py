@@ -184,10 +184,11 @@ PROGRAM = """\
 """
 
 ERROR_HANDLER = """\
+import utila
 try:
 %s
-except Exception as error:
-    print(error)
+except Exception:
+    utila.log_stacktrace()
     __status.error = True
 else:
     __status.ready = True
