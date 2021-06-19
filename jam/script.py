@@ -34,8 +34,12 @@ example
 import dataclasses
 import importlib
 import os
+import re
 
 import PyPDF2
+import PyPDF2.generic
+import PyPDF2.pdf
+import PyPDF2.utils
 import utila
 
 import jam
@@ -63,7 +67,7 @@ def run(script: str, document: str, outpath: str) -> int:
             init_globals=environment,
             run_name=None,
         )
-        jam.pdf.write(outpath, doc.loaded)
+        jam.pdf.write(outpath, doc.loaded, remove_empty=True)
     except SyntaxError as error:
         utila.error(error)
         return utila.FAILURE
@@ -76,11 +80,13 @@ class Document:
         assert os.path.isfile(source), str(source)
         self.loaded = PyPDF2.PdfFileReader(stream=open(source, mode='rb'))
 
-    def pages(self):
-        return {
+    def pages(self) -> dict:
+        result = {
             f'page_{number}': PageHook(self.loaded.getPage(number))
             for number in range(self.loaded.getNumPages())
         }
+        result['pages'] = list(range(self.loaded.getNumPages()))
+        return result
 
 
 class PageHook:
@@ -90,6 +96,35 @@ class PageHook:
 
     def __delattr__(self, name):
         pass
+
+    def text_stream(self):
+        ContentStream = PyPDF2.pdf.ContentStream
+        content = self.page["/Contents"].getObject()
+        if not isinstance(content, ContentStream):
+            content = ContentStream(content, self.page.pdf)
+        # Note: we check all strings are TextStringObjects.  ByteStringObjects
+        # are strings where the byte->string encoding was unknown, so adding
+        # them to the text here would be gibberish.
+        separator = []
+        start = None
+        for index, (_, operator) in enumerate(content.operations):
+            if operator == PyPDF2.utils.b_("BT"):
+                start = index
+            elif operator == PyPDF2.utils.b_("ET"):
+                separator.append((start, index))
+        return separator
+
+    def shrink_stream(self, todo: list):
+        ContentStream = PyPDF2.pdf.ContentStream
+        content = self.page["/Contents"].getObject()
+        if not isinstance(content, ContentStream):
+            content = ContentStream(content, self.page.pdf)
+        result = []
+        for start, end in todo:
+            result.extend(content.operations[start:end + 1])
+        content.operations = result
+        self.page.__setitem__(PyPDF2.generic.NameObject('/Contents'), content)
+        self.page.compressContentStreams()
 
 
 def scriptfile(path: str) -> str:
@@ -103,18 +138,54 @@ def scriptfile(path: str) -> str:
     """
     loaded = utila.file_read(path)
     # ensure indent
-    loaded = [f'    {item}' for item in loaded.splitlines()]
+    loaded = [
+        f'    {prepare(item)}' for item in loaded.splitlines() if item.strip()
+    ]
     loaded = utila.NEWLINE.join(loaded)
-    with_final = (ERROR_HANDLER % loaded)
+    program = PROGRAM % loaded
+    with_final = (ERROR_HANDLER % program)
 
     filepath = utila.tmpfile(jam.ROOT)
     utila.file_replace(filepath, with_final)
     return filepath
 
 
+SELECT_TEXTLINE = r'^sel page_(?P<page>\d+)\.text_(?P<start>\d+)_(?P<end>\d+)$'
+
+
+def prepare(line) -> str:
+    """\
+    >>> prepare('sel page_0.text_0_10')
+    'SELECTED_TEXT[0].append((0,10))'
+    """
+    line = line.strip()
+    if line.startswith('print('):
+        return line
+    if line.startswith('assert'):
+        return line
+    matched = re.match(SELECT_TEXTLINE, line)
+    if matched:
+        return f'SELECTED_TEXT[{matched["page"]}].append(({matched["start"]},{matched["end"]}))'
+    if line.startswith('#'):
+        # comment
+        return line
+    return f'# NOT SUPPORTED: {line}'
+
+
+PROGRAM = """\
+    import collections
+    SELECTED_TEXT = collections.defaultdict(list)
+%s
+    if SELECTED_TEXT:
+        # remove others
+        for page in pages:
+            current = globals()[f'page_{page}']
+            current.shrink_stream(SELECTED_TEXT[page])
+"""
+
 ERROR_HANDLER = """\
 try:
-    %s
+%s
 except Exception as error:
     print(error)
     __status.error = True
