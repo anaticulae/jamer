@@ -6,8 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import os
 
+import power
 import pytest
 
 import jam
@@ -26,11 +28,11 @@ def test_run_external(cmd, monkeypatch):
 
 @pytest.mark.parametrize('cmd', [
     ['-i', 'filedoesnotexists.pdf'],
-    ['-i', tests.resources.MASTER, '--remove', '1'],
-    ['-i', tests.resources.MASTER_72PAGES, '--remove'],
-    ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:X'],
-    ['-i', tests.resources.MASTER_72PAGES, '--remove', '1000'],
-    ['-i', tests.resources.MASTER_72PAGES, '--switch', 'notasplit'],
+    ['-i', power.RESOURCES, '--remove', '1'],
+    ['-i', power.MASTER072_PDF, '--remove'],
+    ['-i', power.MASTER072_PDF, '--remove', '0:X'],
+    ['-i', power.MASTER072_PDF, '--remove', '1000'],
+    ['-i', power.MASTER072_PDF, '--switch', 'notasplit'],
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run_external_failure(cmd, monkeypatch):
@@ -40,21 +42,21 @@ def test_run_external_failure(cmd, monkeypatch):
 def test_run_non_existing_output(testdir, monkeypatch):
     root = str(testdir)
     outpath = os.path.join(root, 'abc/dfc')
-    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --remove 1'
+    cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
     outpath = os.path.join(root, 'abc/output.pdf')
-    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --remove 1'
+    cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
 
 def test_run_remove(testdir, monkeypatch):
     root = str(testdir)
 
-    cmd = ['-i', tests.resources.MASTER_72PAGES, '--remove', '0:10']
+    cmd = ['-i', power.MASTER072_PDF, '--remove', '0:10']
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
-    _, name = os.path.split(tests.resources.MASTER_72PAGES)
+    _, name = os.path.split(power.MASTER072_PDF)
     outpath = os.path.join(root, name)
     assert os.path.exists(outpath), str(outpath)
 
@@ -69,17 +71,17 @@ def test_run_remove(testdir, monkeypatch):
 def test_run_switch(testdir, monkeypatch, raw, before, after):
     root = str(testdir)
 
-    cmd = ['-i', tests.resources.MASTER_72PAGES, '--switch', raw]
+    cmd = ['-i', power.MASTER072_PDF, '--switch', raw]
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
-    _, name = os.path.split(tests.resources.MASTER_72PAGES)
+    _, name = os.path.split(power.MASTER072_PDF)
     outpath = os.path.join(root, name)
     assert os.path.exists(outpath), str(outpath)
 
     pagenumbers = jam.pdf.pagenumber(outpath)
     assert pagenumbers == 72
 
-    hashed = jam.pdf.hashcontent(tests.resources.MASTER_72PAGES, before)
+    hashed = jam.pdf.hashcontent(power.MASTER072_PDF, before)
 
     # ensure that page flip does work
     after_hashed = jam.pdf.hashcontent(outpath, after)
@@ -93,7 +95,7 @@ def test_run_remove_to_output(testdir, monkeypatch):
     root = str(testdir)
     outpath = os.path.join(root, 'removed.pdf')
 
-    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --remove 0:10'
+    cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 0:10'
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
     assert os.path.exists(outpath), str(outpath)
@@ -105,7 +107,7 @@ def test_run_script(testdir, monkeypatch, capsys):
     root = str(testdir)
     outpath = os.path.join(root, 'abc.pdf')
 
-    cmd = (f'-i {tests.resources.MASTER_72PAGES} -o {outpath} '
+    cmd = (f'-i {power.MASTER072_PDF} -o {outpath} '
            f'--script {tests.resources.HELLO_WORLD}')
     tests.run_success(cmd, monkeypatch=monkeypatch)
 

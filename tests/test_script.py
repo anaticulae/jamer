@@ -9,6 +9,7 @@
 
 import os
 
+import power
 import pytest
 import utila
 
@@ -50,7 +51,7 @@ def test_script_master(testdir):
 
     completed = jam.script.run(
         script,
-        document=tests.resources.MASTER_72PAGES,
+        document=power.MASTER072_PDF,
         outpath=outpath,
     )
     assert completed == utila.SUCCESS
@@ -71,7 +72,7 @@ def test_script_execution(code, expected, testdir):
 
     completed = jam.script.run(
         script,
-        document=tests.resources.MASTER_72PAGES,
+        document=power.MASTER072_PDF,
         outpath=outpath,
     )
     assert completed == expected
@@ -84,5 +85,5 @@ def test_script_execution(code, expected, testdir):
 def test_script_execution_simple_changes(path, testdir, monkeypatch):
     root = str(testdir)
     outpath = os.path.join(root, 'changed.pdf')
-    cmd = f'-i {tests.resources.MASTER_72PAGES} -o {outpath} --script {path}'
+    cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
     tests.run_success(cmd, monkeypatch=monkeypatch)

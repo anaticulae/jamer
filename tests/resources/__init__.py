@@ -14,7 +14,6 @@ import jam
 RESOURCES = os.path.join(jam.ROOT, 'tests/resources')
 
 MASTER = os.path.join(RESOURCES, 'master')
-MASTER_72PAGES = os.path.join(MASTER, 'page_72_noimages_toc.pdf')
 
 EXAMPLE = os.path.join(jam.ROOT, 'tests/example')
 HELLO_WORLD = os.path.join(EXAMPLE, 'helloworld.py')
@@ -24,7 +23,6 @@ SCRIPT_SIMPLE_CHANGE = os.path.join(EXAMPLE, 'simplechange.pys')
 
 REQUIRED_RESOURCES = [
     HELLO_WORLD,
-    MASTER_72PAGES,
     SCRIPT_SIMPLE_CHANGE,
     SCRIPT_SIMPLE_DELETE,
 ]
