@@ -44,8 +44,10 @@ def select(path: str, pages: tuple) -> str:
     return outpath
 
 
-def switch(path: str, pages: list) -> str:
+def switch(path: str, pages: list = None) -> str:
     assert os.path.isfile(path), str(path)
+    if not pages:
+        pages = []
     assert all(len(item) == 2 for item in pages), 'require list of tuples'
     numbers = pagenumber(path)
     origin = list(range(numbers))

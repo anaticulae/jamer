@@ -45,8 +45,7 @@ def test_pdf_switch():
 
 
 def test_pdf_switch_empty():
-    flip = []
-    switched = jam.pdf.switch(power.MASTER072_PDF, pages=flip)
+    switched = jam.pdf.switch(power.MASTER072_PDF)
 
     before = jam.pdf.hashcontent(power.MASTER072_PDF)
     after = jam.pdf.hashcontent(switched)
