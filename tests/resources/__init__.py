@@ -22,10 +22,12 @@ HELLO_WORLD = os.path.join(EXAMPLE, 'helloworld.py')
 
 SCRIPT_SIMPLE_DELETE = os.path.join(EXAMPLE, 'simpledelete.pys')
 SCRIPT_SIMPLE_CHANGE = os.path.join(EXAMPLE, 'simplechange.pys')
+SCRIPT_SIMPLE_SELECT = os.path.join(EXAMPLE, 'simpleselect.pys')
 
 REQUIRED_RESOURCES = [
     HELLO_WORLD,
     SCRIPT_SIMPLE_CHANGE,
     SCRIPT_SIMPLE_DELETE,
+    SCRIPT_SIMPLE_SELECT,
     SCALED_PDF,
 ]
