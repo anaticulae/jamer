@@ -46,7 +46,7 @@ def select(path: str, pages: tuple) -> str:
 
 def switch(path: str, pages: list) -> str:
     assert os.path.isfile(path), str(path)
-    assert all([len(item) == 2 for item in pages]), 'require list of tuples'
+    assert all(len(item) == 2 for item in pages), 'require list of tuples'
     numbers = pagenumber(path)
     origin = list(range(numbers))
     for flip_a, flip_b in pages:

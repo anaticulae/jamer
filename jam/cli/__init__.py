@@ -56,9 +56,9 @@ def determine_inputoutput(args: dict):
     if outpath and outpath.endswith('.pdf'):
         # single output file
         del args['output']
-        inpath, _ = utila.sources(args, singleinput=True)
+        inpath, _ = utila.sources(args, singleinput=True)  # pylint:disable=W0632
     else:
-        inpath, outpath = utila.sources(args, singleinput=True)
+        inpath, outpath = utila.sources(args, singleinput=True)  # pylint:disable=W0632
     # support only one input
     inpath = inpath[0] if isinstance(inpath, list) else inpath
     return inpath, outpath
@@ -89,7 +89,7 @@ def extract_pages(args):
 def valid_range(path: str, pages: tuple):
     ranged = jam.pdf.pagenumber(path)
     valid = set(range(ranged))
-    return all([item in valid for item in pages])
+    return all(item in valid for item in pages)
 
 
 def parse_pages(pages: str):
