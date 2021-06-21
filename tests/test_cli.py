@@ -11,6 +11,7 @@ import os
 
 import power
 import pytest
+import utilatest
 
 import jam
 import tests
@@ -104,14 +105,13 @@ def test_run_remove_to_output(testdir, monkeypatch):
 
 
 def test_run_script(testdir, monkeypatch, capsys):
-    root = str(testdir)
-    outpath = os.path.join(root, 'abc.pdf')
+    outpath = os.path.join(testdir.tmpdir, 'abc.pdf')
 
     cmd = (f'-i {power.MASTER072_PDF} -o {outpath} '
            f'--script {tests.resources.HELLO_WORLD}')
     tests.run_success(cmd, monkeypatch=monkeypatch)
 
-    captured = capsys.readouterr().out
-    assert 'hello world' in captured
+    stdout = utilatest.stdout(capsys)
+    assert 'hello world' in stdout
 
     assert os.path.exists(outpath), str(outpath)

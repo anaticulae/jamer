@@ -41,13 +41,11 @@ del page_0.text_1
 """
 
 
-@pytest.mark.xfail(reason='not fully implemented')
 def test_script_master(testdir):
-    root = str(testdir)
-    script = os.path.join(root, 'master.py')
+    script = os.path.join(testdir.tmpdir, 'master.py')
     utila.file_create(script, MASTER)
 
-    outpath = os.path.join(root, 'output.pdf')
+    outpath = os.path.join(testdir.tmpdir, 'output.pdf')
 
     completed = jam.script.run(
         script,
