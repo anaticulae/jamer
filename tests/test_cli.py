@@ -109,3 +109,14 @@ def test_run_script(testdir, monkeypatch, capsys):
     assert 'hello world' in stdout
 
     assert os.path.exists(outpath), str(outpath)
+
+
+def test_printtext(testdir, monkeypatch, capsys):
+    source = tests.resources.SCALED_PDF
+    cmd = f'-i {source} --printtext'
+    tests.run_success(cmd, monkeypatch=monkeypatch)
+
+    stdout = utilatest.stdout(capsys)
+    assert 'page_0' in stdout
+    assert 'page_1' in stdout
+    assert 'page_2' not in stdout

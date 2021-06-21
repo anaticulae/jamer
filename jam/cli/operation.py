@@ -27,11 +27,18 @@ CMD = [
         longcut='--script',
         message='run modification script on resource',
     ),
+    utila.Flag(
+        longcut='--printtext',
+        message='run modification script on resource',
+    ),
 ]
 
 
 def work(inpath: str, outpath: str, pages, args: dict) -> int:
     result = utila.SUCCESS
+    if args['printtext']:
+        printtext(inpath, pages)
+        return utila.SUCCESS
     if args['--remove']:
         result += remove(inpath, outpath, pages)
     if args['--switch']:
@@ -39,6 +46,16 @@ def work(inpath: str, outpath: str, pages, args: dict) -> int:
     if args['--script']:
         result += script(inpath, outpath, args['--script'])
     return result
+
+
+def printtext(inpath: str, pages: tuple) -> int:  # pylint:disable=W0613
+    document = jam.script.Document(inpath)
+    for page, content in document.pages().items():
+        utila.log(page)
+        utila.log('[')
+        for item in content.text_stream():
+            utila.log('(%s, %s),' % (item[0], item[1]), end=' ')
+        utila.log('\n]')
 
 
 def remove(source: str, sink: str, pages: tuple) -> int:

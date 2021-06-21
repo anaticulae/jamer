@@ -57,6 +57,7 @@ def run(script: str, document: str, outpath: str) -> int:
     status = Status()
     environment = {'__status': status}
     environment.update(doc.pages())
+    environment.update({'pages': doc.pagenumbers()})
 
     script = scriptfile(script)
     try:
@@ -85,8 +86,10 @@ class Document:
             f'page_{number}': PageHook(self.loaded.getPage(number))
             for number in range(self.loaded.getNumPages())
         }
-        result['pages'] = list(range(self.loaded.getNumPages()))
         return result
+
+    def pagenumbers(self) -> list:
+        return list(range(self.loaded.getNumPages()))
 
 
 class PageHook:
