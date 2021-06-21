@@ -24,9 +24,7 @@ sel page_0.text_5_1360
 def test_script_select(testdir):
     script = os.path.join(testdir.tmpdir, 'source.py')
     utila.file_create(script, SELECT)
-
     outpath = os.path.join(testdir.tmpdir, 'output.pdf')
-
     assert jam.pagenumber(tests.resources.SCALED_PDF) == 2
     jam.run(
         script,

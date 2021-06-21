@@ -44,9 +44,7 @@ del page_0.text_1
 def test_script_master(testdir):
     script = os.path.join(testdir.tmpdir, 'master.py')
     utila.file_create(script, MASTER)
-
     outpath = os.path.join(testdir.tmpdir, 'output.pdf')
-
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -62,12 +60,9 @@ def test_script_master(testdir):
     pytest.param(RUNTIME_ERROR, utila.FAILURE, id='runtimeerror'),
 ])
 def test_script_execution(code, expected, testdir):
-    root = str(testdir)
-    script = os.path.join(root, 'source.py')
+    script = os.path.join(testdir.tmpdir, 'source.py')
     utila.file_create(script, code)
-
-    outpath = os.path.join(root, 'output.pdf')
-
+    outpath = os.path.join(testdir.tmpdir, 'output.pdf')
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -81,7 +76,6 @@ def test_script_execution(code, expected, testdir):
     pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
 ])
 def test_script_execution_simple_changes(path, testdir, monkeypatch):
-    root = str(testdir)
-    outpath = os.path.join(root, 'changed.pdf')
+    outpath = os.path.join(testdir.tmpdir, 'changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
     tests.run_success(cmd, monkeypatch=monkeypatch)
