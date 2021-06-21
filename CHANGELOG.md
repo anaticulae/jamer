@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add flag to print text document information (3c6eb73c3de9)
+* make error handler more informative (1b96e799773d)
+* add option to select text content (659a32b94a0a)
+* add option to skip empty pages (caf5b7ebd1ef)
+
+### Fix
+
+* improve interface (436a9115c477)
+
 ## v0.2.19
 
 ### Documentation
