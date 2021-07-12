@@ -7,7 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import PyPDF2
+import utila
 
 
 def small(source: str, destination: str):
@@ -21,4 +24,12 @@ def small(source: str, destination: str):
             writer.addPage(page)
         writer.removeImages()
         writer.write(sink)
-    return True
+
+
+GHOST = 'gswin64c' if os.name == 'nt' else 'gs'
+
+
+def ghost_small(source: str, destination: str):
+    config = '-sDEVICE=pdfwrite -dBATCH -dNOPAUSE -SAFE'
+    cmd = f'{GHOST} {config} -sOutputFile={destination} {source}'
+    utila.run(cmd)
