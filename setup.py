@@ -63,6 +63,7 @@ if __name__ == "__main__":
         packages=[
             'jam',
             'jam.cli',
+            'pdfsmall',
         ],
         entry_points={
             'console_scripts': ['jam = jam.cli:main'],
