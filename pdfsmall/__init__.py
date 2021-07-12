@@ -6,3 +6,12 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import os
+
+import jam
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PACKAGE = 'pdfsmall'
+
+__version__ = jam.__version__
