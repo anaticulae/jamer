@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add cli to optimize pdf file size (bb05fbb3160d)
+* add method to optimize pdf file with ghost script (56875fe34012)
+* add operation to reduce pdf file size (9b2b5e752c79)
+
 ## v0.3.1
 
 ## v0.3.0
