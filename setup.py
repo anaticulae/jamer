@@ -49,6 +49,7 @@ if __name__ == "__main__":
         entry_points={
             'console_scripts': [
                 'jam = jam.cli:main',
+                'pdfcat = jam.cat:main',
                 'pdfsmall = pdfsmall.cli:main',
             ],
         },
