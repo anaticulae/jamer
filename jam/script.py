@@ -37,9 +37,9 @@ import os
 import re
 
 import PyPDF2
+import PyPDF2._utils
+import PyPDF2.constants
 import PyPDF2.generic
-import PyPDF2.pdf
-import PyPDF2.utils
 import utila
 
 import jam
@@ -79,30 +79,30 @@ class Document:
 
     def __init__(self, source: str):
         assert os.path.isfile(source), str(source)
-        self.loaded = PyPDF2.PdfFileReader(stream=open(source, mode='rb'))
+        self.loaded = PyPDF2.PdfReader(stream=open(source, mode='rb'))
 
     def pages(self) -> dict:
         result = {
-            f'page_{number}': PageHook(self.loaded.getPage(number))
-            for number in range(self.loaded.getNumPages())
+            f'page_{number}': PageHook(self.loaded._get_page(number))  # pylint:disable=W0212
+            for number in range(self.loaded._get_num_pages())  # pylint:disable=W0212
         }
         return result
 
     def pagenumbers(self) -> list:
-        return list(range(self.loaded.getNumPages()))
+        return list(range(self.loaded._get_num_pages()))  # pylint:disable=W0212
 
 
 class PageHook:
 
-    def __init__(self, page: PyPDF2.pdf.PageObject):
+    def __init__(self, page: PyPDF2.PageObject):
         self.page = page
 
     def __delattr__(self, name):
         pass
 
     def text_stream(self):
-        ContentStream = PyPDF2.pdf.ContentStream
-        content = self.page["/Contents"].getObject()
+        ContentStream = PyPDF2.generic.ContentStream
+        content = self.page["/Contents"].get_object()
         if not isinstance(content, ContentStream):
             content = ContentStream(content, self.page.pdf)
         # Note: we check all strings are TextStringObjects.  ByteStringObjects
@@ -111,15 +111,15 @@ class PageHook:
         separator = []
         start = None
         for index, (_, operator) in enumerate(content.operations):
-            if operator == PyPDF2.utils.b_("BT"):
+            if operator == PyPDF2._utils.b_("BT"):  # pylint:disable=W0212
                 start = index
-            elif operator == PyPDF2.utils.b_("ET"):
+            elif operator == PyPDF2._utils.b_("ET"):  # pylint:disable=W0212
                 separator.append((start, index))
         return separator
 
     def shrink_stream(self, todo: list):
-        ContentStream = PyPDF2.pdf.ContentStream
-        content = self.page["/Contents"].getObject()
+        ContentStream = PyPDF2.generic.ContentStream
+        content = self.page["/Contents"].get_object()
         if not isinstance(content, ContentStream):
             content = ContentStream(content, self.page.pdf)
         result = []
@@ -127,7 +127,7 @@ class PageHook:
             result.extend(content.operations[start:end + 1])
         content.operations = result
         self.page.__setitem__(PyPDF2.generic.NameObject('/Contents'), content)
-        self.page.compressContentStreams()
+        self.page.compress_content_streams()
 
 
 def scriptfile(path: str) -> str:

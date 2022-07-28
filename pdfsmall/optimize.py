@@ -14,15 +14,15 @@ import utila
 
 
 def small(source: str, destination: str):
-    writer = PyPDF2.PdfFileWriter()
+    writer = PyPDF2.PdfWriter()
     with open(source, mode='rb') as stream, open(destination, 'wb') as sink:
-        reader = PyPDF2.PdfFileReader(stream=stream)
+        reader = PyPDF2.PdfReader(stream=stream)
         # compress data stream
-        for number in range(reader.getNumPages()):
-            page = reader.getPage(number)
-            page.compressContentStreams()
-            writer.addPage(page)
-        writer.removeImages()
+        for number in range(reader._get_num_pages()):  # pylint:disable=W0212
+            page = reader._get_page(number)  # pylint:disable=W0212
+            page.compress_content_streams()
+            writer.add_page(page)
+        writer.remove_images()
         writer.write(sink)
 
 

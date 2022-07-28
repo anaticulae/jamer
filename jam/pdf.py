@@ -18,8 +18,8 @@ import jam
 
 def pagenumber(path: str) -> int:
     assert os.path.isfile(path), str(path)
-    loaded = PyPDF2.PdfFileReader(stream=open(path, mode='rb'))
-    return loaded.getNumPages()
+    loaded = PyPDF2.PdfReader(stream=open(path, mode='rb'))
+    return loaded._get_num_pages()  # pylint:disable=W0212
 
 
 def remove(path, pages: tuple) -> str:
@@ -32,12 +32,12 @@ def remove(path, pages: tuple) -> str:
 
 def select(path: str, pages: tuple) -> str:
     assert os.path.isfile(path), str(path)
-    writer = PyPDF2.PdfFileWriter()
+    writer = PyPDF2.PdfWriter()
     with open(path, mode='rb') as source:
-        reader = PyPDF2.PdfFileReader(stream=source)
+        reader = PyPDF2.PdfReader(stream=source)
         for number in pages:
-            page = reader.getPage(number)
-            writer.addPage(page)
+            page = reader._get_page(number)  # pylint:disable=W0212
+            writer.add_page(page)
         outpath = utila.tmpfile(jam.ROOT)
         with open(outpath, 'wb') as sink:
             writer.write(sink)
@@ -59,13 +59,13 @@ def switch(path: str, pages: list = None) -> str:
 
 
 def write(path: str, source, remove_empty: bool = False):
-    writer = PyPDF2.PdfFileWriter()
-    for number in range(source.getNumPages()):
-        page = source.getPage(number)
-        if remove_empty and not page.extractText().strip():
+    writer = PyPDF2.PdfWriter()
+    for number in range(source._get_num_pages()):  # pylint:disable=W0212
+        page = source._get_page(number)  # pylint:disable=W0212
+        if remove_empty and not page.extract_text().strip():
             # skip empty page
             continue
-        writer.addPage(page)
+        writer.add_page(page)
     with open(path, 'wb') as sink:
         writer.write(sink)
 
@@ -85,10 +85,10 @@ def hashcontent(path: str, pages=None) -> int:
         pages = [pages]
     textcount = []
     with open(path, mode='rb') as source:
-        reader = PyPDF2.PdfFileReader(stream=source)
-        selected = range(reader.getNumPages()) if pages is None else pages
+        reader = PyPDF2.PdfReader(stream=source)
+        selected = range(reader._get_num_pages()) if pages is None else pages  # pylint:disable=W0212
         for number in selected:
-            page = reader.getPage(number)
+            page = reader._get_page(number)  # pylint:disable=W0212
             with contextlib.suppress(KeyError):
                 textcontent = page['/Resources']['/Font']
                 textcount.append(len(textcontent))

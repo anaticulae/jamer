@@ -18,8 +18,8 @@ def write_blank_pdf(
 ):
     """Create a pdf file which contains white, blank pages only."""
     assert numbers >= 1, str(numbers)
-    writer = PyPDF2.PdfFileWriter()
+    writer = PyPDF2.PdfWriter()
     for _ in range(numbers):
-        writer.insertBlankPage(width=width, height=height)
+        writer.insert_blank_page(width=width, height=height)
     with open(path, 'wb') as sink:
         writer.write(sink)
