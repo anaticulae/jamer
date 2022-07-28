@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* move pdfcat (df18647b0bc3)
+
+### Documentation
+
+* adjust modules path (09e660d7bdd7)
+* Happy New Year! (93ab83950a65)
+
 ## v0.4.0
 
 ### Feature
