@@ -98,6 +98,7 @@ def test_run_remove_to_output(testdir, monkeypatch):
     assert pagenumbers == 62
 
 
+@utilatest.longrun
 def test_run_script(testdir, monkeypatch, capsys):
     outpath = os.path.join(testdir.tmpdir, 'abc.pdf')
 

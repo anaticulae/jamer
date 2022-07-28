@@ -12,6 +12,7 @@ import os
 import power
 import pytest
 import utila
+import utilatest
 
 import jam.script
 import tests.resources
@@ -41,6 +42,7 @@ del page_0.text_1
 """
 
 
+@utilatest.longrun
 def test_script_master(testdir):
     script = os.path.join(testdir.tmpdir, 'master.py')
     utila.file_create(script, MASTER)
@@ -59,6 +61,7 @@ def test_script_master(testdir):
     pytest.param(SYNTAX_ERROR, utila.FAILURE, id='syntaxerror'),
     pytest.param(RUNTIME_ERROR, utila.FAILURE, id='runtimeerror'),
 ])
+@utilatest.longrun
 def test_script_execution(code, expected, testdir):
     script = os.path.join(testdir.tmpdir, 'source.py')
     utila.file_create(script, code)
@@ -75,6 +78,7 @@ def test_script_execution(code, expected, testdir):
     pytest.param(tests.resources.SCRIPT_SIMPLE_CHANGE, id='change'),
     pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
 ])
+@utilatest.longrun
 def test_script_execution_simple_changes(path, testdir, monkeypatch):
     outpath = os.path.join(testdir.tmpdir, 'changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'

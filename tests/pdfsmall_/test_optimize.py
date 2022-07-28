@@ -16,6 +16,7 @@ import utilatest
 import pdfsmall.optimize
 
 
+@utilatest.nightly
 def test_small(testdir):
     source = power.MASTER116_PDF
     before = utila.file_size(source)
