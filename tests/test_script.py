@@ -44,9 +44,9 @@ del page_0.text_1
 
 @utilatest.longrun
 def test_script_master(testdir):
-    script = os.path.join(testdir.tmpdir, 'master.py')
+    script = testdir.tmpdir.join('master.py')
     utila.file_create(script, MASTER)
-    outpath = os.path.join(testdir.tmpdir, 'output.pdf')
+    outpath = testdir.tmpdir.join('output.pdf')
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -63,9 +63,9 @@ def test_script_master(testdir):
 ])
 @utilatest.longrun
 def test_script_execution(code, expected, testdir):
-    script = os.path.join(testdir.tmpdir, 'source.py')
+    script = testdir.tmpdir.join('source.py')
     utila.file_create(script, code)
-    outpath = os.path.join(testdir.tmpdir, 'output.pdf')
+    outpath = testdir.tmpdir.join('output.pdf')
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -80,6 +80,6 @@ def test_script_execution(code, expected, testdir):
 ])
 @utilatest.longrun
 def test_script_execution_simple_changes(path, testdir, monkeypatch):
-    outpath = os.path.join(testdir.tmpdir, 'changed.pdf')
+    outpath = testdir.tmpdir.join('changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
     tests.run(cmd, monkeypatch=monkeypatch)

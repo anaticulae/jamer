@@ -41,11 +41,11 @@ def test_run_external_failure(cmd, monkeypatch):
 
 
 def test_run_non_existing_output(testdir, monkeypatch):
-    outpath = os.path.join(testdir.tmpdir, 'abc/dfc')
+    outpath = testdir.tmpdir.join('abc/dfc')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
     tests.run(cmd, monkeypatch=monkeypatch)
 
-    outpath = os.path.join(testdir.tmpdir, 'abc/output.pdf')
+    outpath = testdir.tmpdir.join('abc/output.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
     tests.run(cmd, monkeypatch=monkeypatch)
 
@@ -55,7 +55,7 @@ def test_run_remove(testdir, monkeypatch):
     tests.run(cmd, monkeypatch=monkeypatch)
 
     _, name = os.path.split(power.MASTER072_PDF)
-    outpath = os.path.join(testdir.tmpdir, name)
+    outpath = testdir.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
     pagenumbers = jam.pdf.pagenumber(outpath)
@@ -71,7 +71,7 @@ def test_run_switch(testdir, monkeypatch, raw, before, after):
     tests.run(cmd, monkeypatch=monkeypatch)
 
     _, name = os.path.split(power.MASTER072_PDF)
-    outpath = os.path.join(testdir.tmpdir, name)
+    outpath = testdir.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
     pagenumbers = jam.pdf.pagenumber(outpath)
@@ -88,7 +88,7 @@ def test_run_switch(testdir, monkeypatch, raw, before, after):
 
 
 def test_run_remove_to_output(testdir, monkeypatch):
-    outpath = os.path.join(testdir.tmpdir, 'removed.pdf')
+    outpath = testdir.tmpdir.join('removed.pdf')
 
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 0:10'
     tests.run(cmd, monkeypatch=monkeypatch)
@@ -100,7 +100,7 @@ def test_run_remove_to_output(testdir, monkeypatch):
 
 @utilatest.longrun
 def test_run_script(testdir, monkeypatch, capsys):
-    outpath = os.path.join(testdir.tmpdir, 'abc.pdf')
+    outpath = testdir.tmpdir.join('abc.pdf')
 
     cmd = (f'-i {power.MASTER072_PDF} -o {outpath} '
            f'--script {tests.resources.HELLO_WORLD}')

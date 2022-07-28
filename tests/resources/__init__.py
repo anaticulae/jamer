@@ -7,22 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
+import utila
 
 import jam
 
-RESOURCES = os.path.join(jam.ROOT, 'tests/resources')
+RESOURCES = utila.join(jam.ROOT, 'tests/resources', exist=True)
 
-SCALED_PDF = os.path.join(RESOURCES, 'scaled.pdf')
+SCALED_PDF = utila.join(RESOURCES, 'scaled.pdf', exist=True)
 
-MASTER = os.path.join(RESOURCES, 'master')
+EXAMPLE = utila.join(jam.ROOT, 'tests/example', exist=True)
+HELLO_WORLD = utila.join(EXAMPLE, 'helloworld.py', exist=True)
 
-EXAMPLE = os.path.join(jam.ROOT, 'tests/example')
-HELLO_WORLD = os.path.join(EXAMPLE, 'helloworld.py')
-
-SCRIPT_SIMPLE_DELETE = os.path.join(EXAMPLE, 'simpledelete.pys')
-SCRIPT_SIMPLE_CHANGE = os.path.join(EXAMPLE, 'simplechange.pys')
-SCRIPT_SIMPLE_SELECT = os.path.join(EXAMPLE, 'simpleselect.pys')
+SCRIPT_SIMPLE_DELETE = utila.join(EXAMPLE, 'simpledelete.pys', exist=True)
+SCRIPT_SIMPLE_CHANGE = utila.join(EXAMPLE, 'simplechange.pys', exist=True)
+SCRIPT_SIMPLE_SELECT = utila.join(EXAMPLE, 'simpleselect.pys', exist=True)
 
 REQUIRED_RESOURCES = [
     HELLO_WORLD,
