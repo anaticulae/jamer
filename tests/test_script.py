@@ -78,4 +78,4 @@ def test_script_execution(code, expected, testdir):
 def test_script_execution_simple_changes(path, testdir, monkeypatch):
     outpath = os.path.join(testdir.tmpdir, 'changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
-    tests.run_success(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, monkeypatch=monkeypatch)
