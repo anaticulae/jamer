@@ -31,6 +31,12 @@ HEADER = b'%PDF-1.'
 
 
 def ispdf(path: str) -> bool:
+    """\
+    >>> ispdf(__file__)
+    False
+
+    TODO: REPLACE WITH PDFINFO
+    """
     try:
         header = utila.file_read_binary(path, size=len(HEADER))
     except PermissionError:
