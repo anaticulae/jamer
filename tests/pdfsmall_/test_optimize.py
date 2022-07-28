@@ -7,19 +7,29 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import power
 import utila
 import utilatest
 
+import pdfsmall.cli
 import pdfsmall.optimize
+
+small = functools.partial(
+    utilatest.run_cov,
+    process='pdfsmall',
+    main=pdfsmall.cli.main,
+    expect=True,
+)
 
 
 @utilatest.nightly
-def test_small(testdir):
+def test_small(testdir, monkeypatch):
     source = power.MASTER116_PDF
     before = utila.file_size(source)
     outpath = testdir.tmpdir.join('small.pdf')
-    pdfsmall.optimize.small(source, outpath)
+    small(cmd=f'-i {source} -o {outpath}', mp=monkeypatch)
     after = utila.file_size(outpath)
     assert after < before
 
