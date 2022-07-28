@@ -1,5 +1,5 @@
 Welcome to modify test data
-=================================
+===========================
 
 General
 -------
@@ -28,11 +28,12 @@ Developer
   todo
 
 Modules
---------------------
+-------
+
 .. toctree::
    :maxdepth: 4
 
-   .tmp/modules
+   modules
 
 Indices and tables
 ==================
@@ -40,4 +41,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
