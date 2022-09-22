@@ -23,10 +23,10 @@ small = functools.partial(
 )
 
 
-def test_pdfcat(testdir, monkeypatch):
+def test_pdfcat(td, mp):
     source = power.MASTER116_PDF
     before = utila.file_size(source)
-    outpath = testdir.tmpdir.join('small.pdf')
-    small(cmd=f'-o {outpath} {source} 0:2', mp=monkeypatch)
+    outpath = td.tmpdir.join('small.pdf')
+    small(cmd=f'-o {outpath} {source} 0:2', mp=mp)
     after = utila.file_size(outpath)
     assert after < before

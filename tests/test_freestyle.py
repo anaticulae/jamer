@@ -10,7 +10,7 @@
 import jam
 
 
-def test_write_blank_pages(testdir):
-    destination = testdir.tmpdir.join('empty_pages.pdf')
+def test_write_blank_pages(td):
+    destination = td.tmpdir.join('empty_pages.pdf')
     jam.write_blank_pdf(10, destination)
     assert jam.pagenumber(destination) == 10

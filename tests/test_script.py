@@ -43,10 +43,10 @@ del page_0.text_1
 
 
 @utilatest.longrun
-def test_script_master(testdir):
-    script = testdir.tmpdir.join('master.py')
+def test_script_master(td):
+    script = td.tmpdir.join('master.py')
     utila.file_create(script, MASTER)
-    outpath = testdir.tmpdir.join('output.pdf')
+    outpath = td.tmpdir.join('output.pdf')
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -62,10 +62,10 @@ def test_script_master(testdir):
     pytest.param(RUNTIME_ERROR, utila.FAILURE, id='runtimeerror'),
 ])
 @utilatest.longrun
-def test_script_execution(code, expected, testdir):
-    script = testdir.tmpdir.join('source.py')
+def test_script_execution(code, expected, td):
+    script = td.tmpdir.join('source.py')
     utila.file_create(script, code)
-    outpath = testdir.tmpdir.join('output.pdf')
+    outpath = td.tmpdir.join('output.pdf')
     completed = jam.script.run(
         script,
         document=power.MASTER072_PDF,
@@ -79,7 +79,7 @@ def test_script_execution(code, expected, testdir):
     pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
 ])
 @utilatest.longrun
-def test_script_execution_simple_changes(path, testdir, monkeypatch):
-    outpath = testdir.tmpdir.join('changed.pdf')
+def test_script_execution_simple_changes(path, td, mp):
+    outpath = td.tmpdir.join('changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)

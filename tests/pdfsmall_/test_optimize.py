@@ -25,20 +25,20 @@ small = functools.partial(
 
 
 @utilatest.nightly
-def test_small(testdir, monkeypatch):
+def test_small(td, mp):
     source = power.MASTER116_PDF
     before = utila.file_size(source)
-    outpath = testdir.tmpdir.join('small.pdf')
-    small(cmd=f'-i {source} -o {outpath}', mp=monkeypatch)
+    outpath = td.tmpdir.join('small.pdf')
+    small(cmd=f'-i {source} -o {outpath}', mp=mp)
     after = utila.file_size(outpath)
     assert after < before
 
 
 @utilatest.longrun
-def test_ghost(testdir):
+def test_ghost(td):
     source = power.MASTER116_PDF
     before = utila.file_size(source)
-    outpath = testdir.tmpdir.join('small.pdf')
+    outpath = td.tmpdir.join('small.pdf')
     pdfsmall.optimize.ghost_small(source, outpath)
     after = utila.file_size(outpath)
     assert after < before

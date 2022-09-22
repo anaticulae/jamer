@@ -22,9 +22,9 @@ import tests.resources
     ['--help'],
     ['--version'],
 ])
-@pytest.mark.usefixtures('testdir')
-def test_run_external(cmd, monkeypatch):
-    tests.run(cmd, monkeypatch=monkeypatch)
+@pytest.mark.usefixtures('td')
+def test_run_external(cmd, mp):
+    tests.run(cmd, mp=mp)
 
 
 @pytest.mark.parametrize('cmd', [
@@ -35,27 +35,27 @@ def test_run_external(cmd, monkeypatch):
     ['-i', power.MASTER072_PDF, '--remove', '1000'],
     ['-i', power.MASTER072_PDF, '--switch', 'notasplit'],
 ])
-@pytest.mark.usefixtures('testdir')
-def test_run_external_failure(cmd, monkeypatch):
-    tests.fail(cmd, monkeypatch=monkeypatch)
+@pytest.mark.usefixtures('td')
+def test_run_external_failure(cmd, mp):
+    tests.fail(cmd, mp=mp)
 
 
-def test_run_non_existing_output(testdir, monkeypatch):
-    outpath = testdir.tmpdir.join('abc/dfc')
+def test_run_non_existing_output(td, mp):
+    outpath = td.tmpdir.join('abc/dfc')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
-    outpath = testdir.tmpdir.join('abc/output.pdf')
+    outpath = td.tmpdir.join('abc/output.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
 
-def test_run_remove(testdir, monkeypatch):
+def test_run_remove(td, mp):
     cmd = ['-i', power.MASTER072_PDF, '--remove', '0:10']
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
     _, name = os.path.split(power.MASTER072_PDF)
-    outpath = testdir.tmpdir.join(name)
+    outpath = td.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
     pagenumbers = jam.pdf.pagenumber(outpath)
@@ -66,12 +66,12 @@ def test_run_remove(testdir, monkeypatch):
     ('0,1|10,20', [0, 1, 10, 20], [1, 0, 20, 10]),
     ('10,20', [10, 20], [20, 10]),
 ])
-def test_run_switch(testdir, monkeypatch, raw, before, after):
+def test_run_switch(td, mp, raw, before, after):
     cmd = ['-i', power.MASTER072_PDF, '--switch', raw]
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
     _, name = os.path.split(power.MASTER072_PDF)
-    outpath = testdir.tmpdir.join(name)
+    outpath = td.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
     pagenumbers = jam.pdf.pagenumber(outpath)
@@ -87,11 +87,11 @@ def test_run_switch(testdir, monkeypatch, raw, before, after):
     assert after_hashed != hashed
 
 
-def test_run_remove_to_output(testdir, monkeypatch):
-    outpath = testdir.tmpdir.join('removed.pdf')
+def test_run_remove_to_output(td, mp):
+    outpath = td.tmpdir.join('removed.pdf')
 
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 0:10'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
     assert os.path.exists(outpath), str(outpath)
     pagenumbers = jam.pdf.pagenumber(outpath)
@@ -99,12 +99,12 @@ def test_run_remove_to_output(testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_run_script(testdir, monkeypatch, capsys):
-    outpath = testdir.tmpdir.join('abc.pdf')
+def test_run_script(td, mp, capsys):
+    outpath = td.tmpdir.join('abc.pdf')
 
     cmd = (f'-i {power.MASTER072_PDF} -o {outpath} '
            f'--script {tests.resources.HELLO_WORLD}')
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
     stdout = utilatest.stdout(capsys)
     assert 'hello world' in stdout
@@ -112,10 +112,10 @@ def test_run_script(testdir, monkeypatch, capsys):
     assert os.path.exists(outpath), str(outpath)
 
 
-def test_printtext(testdir, monkeypatch, capsys):
+def test_printtext(td, mp, capsys):  # pylint:disable=W0613
     source = tests.resources.SCALED_PDF
     cmd = f'-i {source} --printtext'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
 
     stdout = utilatest.stdout(capsys)
     assert 'page_0' in stdout
