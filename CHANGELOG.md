@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## 0.5.1
+
+### Chore
+
+* add Jenkinsfile (fc66f9d99ce0)
+* upgrade requirements.txt (eb3da1ee3c1d)
+
 ## v0.5.0
 
 ### Feature
