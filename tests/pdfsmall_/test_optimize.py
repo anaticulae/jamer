@@ -15,6 +15,7 @@ import utilatest
 
 import pdfsmall.cli
 import pdfsmall.optimize
+import tests.pdfsmall_
 
 small = functools.partial(
     utilatest.run_cov,
@@ -24,6 +25,7 @@ small = functools.partial(
 )
 
 
+@tests.pdfsmall_.hasghost
 @utilatest.nightly
 def test_small(td, mp):
     source = power.MASTER116_PDF
@@ -34,6 +36,7 @@ def test_small(td, mp):
     assert after < before
 
 
+@tests.pdfsmall_.hasghost
 @utilatest.longrun
 def test_ghost(td):
     source = power.MASTER116_PDF

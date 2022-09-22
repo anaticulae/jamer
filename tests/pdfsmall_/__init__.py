@@ -6,3 +6,13 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import pytest
+import utila
+
+import pdfsmall.optimize
+
+hasghost = pytest.mark.skipif(
+    not utila.hasprog(pdfsmall.optimize.GHOST),
+    reason='require ghost',
+)
