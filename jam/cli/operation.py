@@ -54,7 +54,7 @@ def printtext(inpath: str, pages: tuple) -> int:  # pylint:disable=W0613
         utila.log(page)
         utila.log('[')
         for item in content.text_stream():
-            utila.log('(%s, %s),' % (item[0], item[1]), end=' ')
+            utila.log(f'({item[0]}, {item[1]}),', end=' ')
         utila.log('\n]')
 
 

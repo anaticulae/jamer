@@ -79,7 +79,7 @@ class Document:
 
     def __init__(self, source: str):
         assert os.path.isfile(source), str(source)
-        self.loaded = PyPDF2.PdfReader(stream=open(source, mode='rb'))
+        self.loaded = PyPDF2.PdfReader(stream=open(source, mode='rb'))  # pylint:disable=R1732
 
     def pages(self) -> dict:
         result = {
@@ -126,7 +126,10 @@ class PageHook:
         for start, end in todo:
             result.extend(content.operations[start:end + 1])
         content.operations = result
-        self.page.__setitem__(PyPDF2.generic.NameObject('/Contents'), content)
+        self.page.__setitem__(
+            PyPDF2.generic.NameObject('/Contents'),
+            content,
+        )
         self.page.compress_content_streams()
 
 
