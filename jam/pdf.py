@@ -18,8 +18,11 @@ import jam
 
 def pagenumber(path: str) -> int:
     assert os.path.isfile(path), str(path)
-    loaded = PyPDF2.PdfReader(stream=open(path, mode='rb'))
-    return loaded._get_num_pages()  # pylint:disable=W0212
+    pagenumbers: int = None
+    with open(path, mode='rb') as pdf:
+        loaded = PyPDF2.PdfReader(stream=pdf)
+        pagenumbers = loaded._get_num_pages()  # pylint:disable=W0212
+    return pagenumbers
 
 
 def remove(path, pages: tuple) -> str:

@@ -72,7 +72,7 @@ def main():
         sys.stdout.flush()
         output = os.fdopen(sys.stdout.fileno(), "wb")
     merger = PdfMerger()
-    in_fs = dict()
+    in_fs = {}
     try:
         for (filename, page_range) in filename_page_ranges:
             if args.verbose:
