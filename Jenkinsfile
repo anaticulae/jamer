@@ -38,10 +38,10 @@ pipeline {
                 sh 'baw lint'
             }
         }
-        stage('nightly'){
+        stage('all'){
             steps{
                 // TODO: ADD JUNIT OPTION TO BAW
-                sh 'baw test nightly -n16 --cov --junit_xml=report.xml'
+                sh 'baw test all -n16 --cov --junit_xml=report.xml'
                 junit '**/report.xml'
             }
         }
