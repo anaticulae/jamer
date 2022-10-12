@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.5.2 (2022-10-12)
+
+### Chore
+
+* use ghost image (9a1cd12bf620)
+* convert nightly to all (8395f9ad7bfc)
+* do not run in privileged mode (b36fbcc02def)
+* upgrade requirements.txt (afaa82fb78ee)
+
 ## 0.5.1
 
 ### Chore
