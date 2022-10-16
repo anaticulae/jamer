@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.5.3 (2022-10-16)
+
+### Fix
+
+* adjust interface after upgrading (62a7ba0a0a32)
+
+### Chore
+
+* enable timeout (7a809d953ba2)
+* upgrade requirements.txt (c44c95841b07)
+
 ## v0.5.2 (2022-10-12)
 
 ### Chore
