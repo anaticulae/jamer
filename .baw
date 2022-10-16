@@ -12,3 +12,6 @@ short = jam
 name = modify test data
 
 source = pdfsmall
+
+[test]
+plugins=timeout
