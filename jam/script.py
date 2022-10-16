@@ -126,7 +126,7 @@ class PageHook:
         for start, end in todo:
             result.extend(content.operations[start:end + 1])
         content.operations = result
-        self.page.__setitem__(
+        self.page.__setitem__(  # pylint:disable=C2801
             PyPDF2.generic.NameObject('/Contents'),
             content,
         )
