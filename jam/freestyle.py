@@ -9,6 +9,8 @@
 
 import PyPDF2
 
+PAGE_COUNT_MAX = 100000
+
 
 def write_blank_pdf(
     numbers: int,
@@ -18,8 +20,11 @@ def write_blank_pdf(
 ):
     """Create a pdf file which contains white, blank pages only."""
     assert numbers >= 1, str(numbers)
-    writer = PyPDF2.PdfWriter()
-    for _ in range(numbers):
-        writer.insert_blank_page(width=width, height=height)
+    assert numbers <= PAGE_COUNT_MAX, f'too many pages: {numbers} <= {PAGE_COUNT_MAX}'
     with open(path, 'wb') as sink:
-        writer.write(sink)
+        with PyPDF2.PdfWriter(fileobj=sink) as writer:
+            for _ in range(numbers):
+                writer.add_blank_page(
+                    width=width,
+                    height=height,
+                )
