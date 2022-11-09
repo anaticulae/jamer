@@ -194,7 +194,7 @@ import utila
 try:
 %s
 except Exception:
-    utila.log_stacktrace()
+    utila.print_stacktrace()
     __status.error = True
 else:
     __status.ready = True
