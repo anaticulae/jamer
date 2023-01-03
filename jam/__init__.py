@@ -19,7 +19,7 @@ from jam.pdf import write
 from jam.script import run
 from jam.script import scriptfile
 
-__version__ = '0.5.3'
+__version__ = '0.5.4'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'jam'
