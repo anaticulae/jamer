@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
 
 from jam.freestyle import write_blank_pdf
@@ -19,7 +20,7 @@ from jam.pdf import write
 from jam.script import run
 from jam.script import scriptfile
 
-__version__ = '0.5.4'
+__version__ = importlib.metadata.version('jamer')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'jam'
