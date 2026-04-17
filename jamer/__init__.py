@@ -7,7 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-from jam.cli import main
+import importlib.metadata
+import os
 
-if __name__ == "__main__":
-    main()
+from jamer.freestyle import write_blank_pdf
+from jamer.pdf import hashcontent
+from jamer.pdf import pagenumber
+from jamer.pdf import remove
+from jamer.pdf import select
+from jamer.pdf import switch
+from jamer.pdf import write
+from jamer.script import run
+from jamer.script import scriptfile
+
+__version__ = importlib.metadata.version('jamer')
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROCESS = 'jamer'

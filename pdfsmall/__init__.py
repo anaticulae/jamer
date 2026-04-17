@@ -9,9 +9,9 @@
 
 import os
 
-import jam
+import jamer
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PACKAGE = 'pdfsmall'
 
-__version__ = jam.__version__
+__version__ = jamer.__version__

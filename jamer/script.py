@@ -42,8 +42,8 @@ import PyPDF2.constants
 import PyPDF2.generic
 import utila
 
-import jam
-import jam.pdf
+import jamer
+import jamer.pdf
 
 
 @dataclasses.dataclass
@@ -68,7 +68,7 @@ def run(script: str, document: str, outpath: str) -> int:
             init_globals=environment,
             run_name=None,
         )
-        jam.pdf.write(outpath, doc.loaded, remove_empty=True)
+        jamer.pdf.write(outpath, doc.loaded, remove_empty=True)
     except SyntaxError as error:
         utila.error(error)
         return utila.FAILURE
@@ -83,7 +83,8 @@ class Document:
 
     def pages(self) -> dict:
         result = {
-            f'page_{number}': PageHook(self.loaded._get_page(number))  # pylint:disable=W0212
+            f'page_{number}':
+                PageHook(self.loaded._get_page(number))  # pylint:disable=W0212
             for number in range(self.loaded._get_num_pages())  # pylint:disable=W0212
         }
         return result
@@ -151,7 +152,7 @@ def scriptfile(path: str) -> str:
     program = PROGRAM % loaded
     with_final = (ERROR_HANDLER % program)
 
-    filepath = utila.tmpfile(jam.ROOT)
+    filepath = utila.tmpfile(jamer.ROOT)
     utila.file_replace(filepath, with_final)
     return filepath
 

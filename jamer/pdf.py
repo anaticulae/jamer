@@ -13,7 +13,7 @@ import os
 import PyPDF2
 import utila
 
-import jam
+import jamer
 
 
 def pagenumber(path: str) -> int:
@@ -41,7 +41,7 @@ def select(path: str, pages: tuple) -> str:
         for number in pages:
             page = reader._get_page(number)  # pylint:disable=W0212
             writer.add_page(page)
-        outpath = utila.tmpfile(jam.ROOT)
+        outpath = utila.tmpfile(jamer.ROOT)
         with open(outpath, 'wb') as sink:
             writer.write(sink)
     return outpath

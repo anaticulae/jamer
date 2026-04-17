@@ -9,13 +9,13 @@
 
 import utila
 
-import jam
+import jamer
 
-RESOURCES = utila.join(jam.ROOT, 'tests/resources', exist=True)
+RESOURCES = utila.join(jamer.ROOT, 'tests/resources', exist=True)
 
 SCALED_PDF = utila.join(RESOURCES, 'scaled.pdf', exist=True)
 
-EXAMPLE = utila.join(jam.ROOT, 'tests/example', exist=True)
+EXAMPLE = utila.join(jamer.ROOT, 'tests/example', exist=True)
 HELLO_WORLD = utila.join(EXAMPLE, 'helloworld.py', exist=True)
 
 SCRIPT_SIMPLE_DELETE = utila.join(EXAMPLE, 'simpledelete.pys', exist=True)

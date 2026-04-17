@@ -13,12 +13,12 @@ import power
 import utila
 import utilatest
 
-import jam.cat
+import jamer.cat
 
 small = functools.partial(
     utilatest.run_cov,
     process='pdfcat',
-    main=jam.cat.main,
+    main=jamer.cat.main,
     expect=True,
 )
 

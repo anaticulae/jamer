@@ -9,7 +9,7 @@
 
 import utila
 
-import jam
+import jamer
 import tests.resources
 
 SELECT = """
@@ -23,10 +23,10 @@ def test_script_select(td):
     script = td.tmpdir.join('source.py')
     utila.file_create(script, SELECT)
     outpath = td.tmpdir.join('output.pdf')
-    assert jam.pagenumber(tests.resources.SCALED_PDF) == 2
-    jam.run(
+    assert jamer.pagenumber(tests.resources.SCALED_PDF) == 2
+    jamer.run(
         script,
         document=tests.resources.SCALED_PDF,
         outpath=outpath,
     )
-    assert jam.pagenumber(outpath) == 1
+    assert jamer.pagenumber(outpath) == 1

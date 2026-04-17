@@ -8,10 +8,7 @@
 #==============================================================================
 
 [project]
-short = jam
+short = jamer
 name = modify test data
 
 source = pdfsmall
-
-[test]
-plugins=timeout

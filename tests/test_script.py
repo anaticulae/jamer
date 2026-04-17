@@ -14,7 +14,7 @@ import pytest
 import utila
 import utilatest
 
-import jam.script
+import jamer.script
 import tests.resources
 
 EXAMPLE = """
@@ -47,7 +47,7 @@ def test_script_master(td):
     script = td.tmpdir.join('master.py')
     utila.file_create(script, MASTER)
     outpath = td.tmpdir.join('output.pdf')
-    completed = jam.script.run(
+    completed = jamer.script.run(
         script,
         document=power.MASTER072_PDF,
         outpath=outpath,
@@ -66,7 +66,7 @@ def test_script_execution(code, expected, td):
     script = td.tmpdir.join('source.py')
     utila.file_create(script, code)
     outpath = td.tmpdir.join('output.pdf')
-    completed = jam.script.run(
+    completed = jamer.script.run(
         script,
         document=power.MASTER072_PDF,
         outpath=outpath,

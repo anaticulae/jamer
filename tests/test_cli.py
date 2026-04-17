@@ -13,7 +13,7 @@ import power
 import pytest
 import utilatest
 
-import jam
+import jamer
 import tests
 import tests.resources
 
@@ -58,7 +58,7 @@ def test_run_remove(td, mp):
     outpath = td.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
-    pagenumbers = jam.pdf.pagenumber(outpath)
+    pagenumbers = jamer.pdf.pagenumber(outpath)
     assert pagenumbers == 62
 
 
@@ -74,16 +74,16 @@ def test_run_switch(td, mp, raw, before, after):
     outpath = td.tmpdir.join(name)
     assert os.path.exists(outpath), str(outpath)
 
-    pagenumbers = jam.pdf.pagenumber(outpath)
+    pagenumbers = jamer.pdf.pagenumber(outpath)
     assert pagenumbers == 72
 
-    hashed = jam.pdf.hashcontent(power.MASTER072_PDF, before)
+    hashed = jamer.pdf.hashcontent(power.MASTER072_PDF, before)
 
     # ensure that page flip does work
-    after_hashed = jam.pdf.hashcontent(outpath, after)
+    after_hashed = jamer.pdf.hashcontent(outpath, after)
     assert after_hashed == hashed, 'switch does not work'
 
-    after_hashed = jam.pdf.hashcontent(outpath, before)
+    after_hashed = jamer.pdf.hashcontent(outpath, before)
     assert after_hashed != hashed
 
 
@@ -94,7 +94,7 @@ def test_run_remove_to_output(td, mp):
     tests.run(cmd, mp=mp)
 
     assert os.path.exists(outpath), str(outpath)
-    pagenumbers = jam.pdf.pagenumber(outpath)
+    pagenumbers = jamer.pdf.pagenumber(outpath)
     assert pagenumbers == 62
 
 

@@ -10,9 +10,9 @@
 import utila
 import utila.cli
 
-import jam.cli
-import jam.pdf
-import jam.script
+import jamer.cli
+import jamer.pdf
+import jamer.script
 
 CMD = [
     utila.cli.Parameter(
@@ -49,7 +49,7 @@ def work(inpath: str, outpath: str, pages, args: dict) -> int:
 
 
 def printtext(inpath: str, pages: tuple) -> int:  # pylint:disable=W0613
-    document = jam.script.Document(inpath)
+    document = jamer.script.Document(inpath)
     for page, content in document.pages().items():
         utila.log(page)
         utila.log('[')
@@ -60,7 +60,7 @@ def printtext(inpath: str, pages: tuple) -> int:  # pylint:disable=W0613
 
 def remove(source: str, sink: str, pages: tuple) -> int:
     utila.log(f'remove: {pages}\nfrom: {source}\nresult: {sink}')
-    tmp = jam.pdf.remove(source, pages)
+    tmp = jamer.pdf.remove(source, pages)
     utila.copy_content(tmp, sink)
     utila.log('completed')
     return utila.SUCCESS
@@ -72,14 +72,14 @@ def switch(source: str, sink: str, selected: str) -> int:
         utila.error(f'invalid switch argument `{selected}`')
         return utila.INVALID_COMMAND
 
-    switched = jam.pdf.switch(source, parsed)
+    switched = jamer.pdf.switch(source, parsed)
     utila.copy_content(switched, sink)
     utila.log('completed')
     return utila.SUCCESS
 
 
 def script(source: str, sink: str, scriptpath: str) -> int:
-    failure = jam.script.run(script=scriptpath, document=source, outpath=sink)
+    failure = jamer.script.run(script=scriptpath, document=source, outpath=sink)
     if failure:
         return failure
     utila.log('completed')

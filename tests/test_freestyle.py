@@ -10,13 +10,13 @@
 import pytest
 import utilatest
 
-import jam
+import jamer
 
 
 def test_write_blank_pages(td):
     destination = td.tmpdir.join('empty_pages.pdf')
-    jam.write_blank_pdf(10, destination)
-    assert jam.pagenumber(destination) == 10
+    jamer.write_blank_pdf(10, destination)
+    assert jamer.pagenumber(destination) == 10
 
 
 @pytest.mark.timeout(120)
@@ -24,5 +24,5 @@ def test_write_blank_pages(td):
 def test_write_blank_verylong(td):
     destination = td.tmpdir.join('verylong.pdf')
     pagecount = 10000
-    jam.write_blank_pdf(pagecount, destination)
-    assert jam.pagenumber(destination) == pagecount
+    jamer.write_blank_pdf(pagecount, destination)
+    assert jamer.pagenumber(destination) == pagecount

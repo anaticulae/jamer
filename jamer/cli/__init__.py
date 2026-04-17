@@ -13,14 +13,14 @@ import PyPDF2
 import utila
 import utila.cli
 
-import jam
-import jam.cli.operation
-import jam.pdf
+import jamer
+import jamer.cli.operation
+import jamer.pdf
 
 
 @utila.saveme
 def main():
-    cmds = list(jam.cli.operation.CMD)
+    cmds = list(jamer.cli.operation.CMD)
     parser = utila.cli.create_parser(
         todo=cmds,
         config=utila.ParserConfiguration(
@@ -29,7 +29,7 @@ def main():
             pages=False,
             prefix=False,
         ),
-        version=jam.__version__,
+        version=jamer.__version__,
     )
     args = utila.parse(parser)
     inpath, outpath = determine_inputoutput(args)
@@ -45,7 +45,7 @@ def main():
     if pages:
         pages = parse_pages(pages)
 
-    result = jam.cli.operation.work(inpath, outpath, pages, args)
+    result = jamer.cli.operation.work(inpath, outpath, pages, args)
     return result
 
 
@@ -86,7 +86,7 @@ def extract_pages(args):
 
 
 def valid_range(path: str, pages: tuple):
-    ranged = jam.pdf.pagenumber(path)
+    ranged = jamer.pdf.pagenumber(path)
     valid = set(range(ranged))
     return all(item in valid for item in pages)
 

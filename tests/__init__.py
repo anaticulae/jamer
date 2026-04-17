@@ -9,6 +9,6 @@
 
 import utilatest
 
-import jam
+import jamer
 
-run, fail = utilatest.create_cli_runner(jam)
+run, fail = utilatest.create_cli_runner(jamer)

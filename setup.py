@@ -11,13 +11,13 @@
 import utila
 
 PACKAGES = [
-    'jam',
-    'jam.cli',
+    'jamer',
+    'jamer.cli',
     'pdfsmall',
 ]
 ENTRY_POINTS = dict(console_scripts=[
-    'jam = jam.cli:main',
-    'pdfcat = jam.cat:main',
+    'jamer = jamer.cli:main',
+    'pdfcat = jamer.cat:main',
     'pdfsmall = pdfsmall.cli:main',
 ])
 
