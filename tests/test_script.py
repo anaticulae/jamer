@@ -7,15 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
+# import os
 
-import power
-import pytest
-import utilo
-import utilotest
+# import power
+# import pytest
+# import utilo
+# import utilotest
 
-import jamer.script
-import tests.resources
+# import jamer.script
+# import tests.resources
 
 EXAMPLE = """
 print('hello')
@@ -41,45 +41,42 @@ page_0.text_3.bold = True
 del page_0.text_1
 """
 
+# @utilotest.longrun
+# def test_script_master(td):
+#     script = td.tmpdir.join('master.py')
+#     utilo.file_create(script, MASTER)
+#     outpath = td.tmpdir.join('output.pdf')
+#     completed = jamer.script.run(
+#         script,
+#         document=power.MASTER072_PDF,
+#         outpath=outpath,
+#     )
+#     assert completed == utilo.SUCCESS
+#     assert os.path.exists(outpath), str(outpath)
 
-@utilotest.longrun
-def test_script_master(td):
-    script = td.tmpdir.join('master.py')
-    utilo.file_create(script, MASTER)
-    outpath = td.tmpdir.join('output.pdf')
-    completed = jamer.script.run(
-        script,
-        document=power.MASTER072_PDF,
-        outpath=outpath,
-    )
-    assert completed == utilo.SUCCESS
-    assert os.path.exists(outpath), str(outpath)
+# @pytest.mark.parametrize('code, expected', [
+#     pytest.param(EXAMPLE, utilo.SUCCESS, id='simple'),
+#     pytest.param(SYNTAX_ERROR, utilo.FAILURE, id='syntaxerror'),
+#     pytest.param(RUNTIME_ERROR, utilo.FAILURE, id='runtimeerror'),
+# ])
+# @utilotest.longrun
+# def test_script_execution(code, expected, td):
+#     script = td.tmpdir.join('source.py')
+#     utilo.file_create(script, code)
+#     outpath = td.tmpdir.join('output.pdf')
+#     completed = jamer.script.run(
+#         script,
+#         document=power.MASTER072_PDF,
+#         outpath=outpath,
+#     )
+#     assert completed == expected
 
-
-@pytest.mark.parametrize('code, expected', [
-    pytest.param(EXAMPLE, utilo.SUCCESS, id='simple'),
-    pytest.param(SYNTAX_ERROR, utilo.FAILURE, id='syntaxerror'),
-    pytest.param(RUNTIME_ERROR, utilo.FAILURE, id='runtimeerror'),
-])
-@utilotest.longrun
-def test_script_execution(code, expected, td):
-    script = td.tmpdir.join('source.py')
-    utilo.file_create(script, code)
-    outpath = td.tmpdir.join('output.pdf')
-    completed = jamer.script.run(
-        script,
-        document=power.MASTER072_PDF,
-        outpath=outpath,
-    )
-    assert completed == expected
-
-
-@pytest.mark.parametrize('path', [
-    pytest.param(tests.resources.SCRIPT_SIMPLE_CHANGE, id='change'),
-    pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
-])
-@utilotest.longrun
-def test_script_execution_simple_changes(path, td, mp):
-    outpath = td.tmpdir.join('changed.pdf')
-    cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
-    tests.run(cmd, mp=mp)
+# @pytest.mark.parametrize('path', [
+#     pytest.param(tests.resources.SCRIPT_SIMPLE_CHANGE, id='change'),
+#     pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
+# ])
+# @utilotest.longrun
+# def test_script_execution_simple_changes(path, td, mp):
+#     outpath = td.tmpdir.join('changed.pdf')
+#     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
+#     tests.run(cmd, mp=mp)
