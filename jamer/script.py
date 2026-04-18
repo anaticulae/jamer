@@ -150,7 +150,7 @@ def scriptfile(path: str) -> str:
     ]
     loaded = utilo.NEWLINE.join(loaded)
     program = PROGRAM % loaded
-    with_final = (ERROR_HANDLER % program)
+    with_final = ERROR_HANDLER % program
 
     filepath = utilo.tmpfile(jamer.ROOT)
     utilo.file_replace(filepath, with_final)
