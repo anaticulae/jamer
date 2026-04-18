@@ -1,203 +1,718 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-04-18)
+
+### Bug Fixes
+
+- **utilo**: Adjust package name
+  ([`99cd198`](https://github.com/anaticulae/jamer/commit/99cd198e49d33260d647c923dd6d928f7a6a6954))
+
+### Chores
+
+- **baw**: Adjust project name
+  ([`a8d042e`](https://github.com/anaticulae/jamer/commit/a8d042e3535d872f9eefdf0326caf7dcc2b0d4e5))
+
+- **github**: Add .github
+  ([`bbf43cc`](https://github.com/anaticulae/jamer/commit/bbf43cce62f9047e41d567f0d513840e484271ef))
+
+- **jenkins**: Remove jenkins file
+  ([`41326b0`](https://github.com/anaticulae/jamer/commit/41326b0f080b450482a6f5ff603615ea6215ce2e))
+
+- **license**: Add license file
+  ([`66031a8`](https://github.com/anaticulae/jamer/commit/66031a833eafdd9efe2035b9571c7b98e1078de2))
+
+- **rename**: Adjust file names
+  ([`33a2256`](https://github.com/anaticulae/jamer/commit/33a225686e1a31307081e5401bfa6b812d4c2eb6))
+
+- **requirements**: Remove outdated files
+  ([`d2c00d2`](https://github.com/anaticulae/jamer/commit/d2c00d2b3aafe0dc0f279320d3b2c2e0e410f604))
+
+- **setup**: Add pyproject
+  ([`fa24465`](https://github.com/anaticulae/jamer/commit/fa2446509a02ac6c61e8923fb5e64ed70af846af))
+
+- **setup**: Remove outdated setup
+  ([`1ca890a`](https://github.com/anaticulae/jamer/commit/1ca890a6c61b23792b8e068842e84ff0e7bf905e))
+
+- **setup**: Use quick install
+  ([`8fd3351`](https://github.com/anaticulae/jamer/commit/8fd3351897fac9a912e786349ae5476a4051affc))
+
+### Code Style
+
+- **script**: Solve linter error
+  ([`ed85fa9`](https://github.com/anaticulae/jamer/commit/ed85fa9f6cd44af745ab7aafa60eaee327e37357))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`12d1cbb`](https://github.com/anaticulae/jamer/commit/12d1cbb3b8d38a71979b57386f7d17302bc84e2a))
+
+### Testing
+
+- **disable**: Missing power required tests
+  ([`aafa11c`](https://github.com/anaticulae/jamer/commit/aafa11caff260d90ffe83f403c3777a0a22c3302))
+
 
 ## v0.5.4 (2023-01-03)
 
-### Chore
+### Chores
 
-* upgrade pipeline (9427fb46510f)
-* upgrade requirements.txt (47228e94fdd3)
+- **Jenkins**: Upgrade pipeline
+  ([`9427fb4`](https://github.com/anaticulae/jamer/commit/9427fb46510f181d9a44f91728204ac7b2631463))
+
+- **requirements**: Upgrade requirements.txt
+  ([`47228e9`](https://github.com/anaticulae/jamer/commit/47228e94fdd3da657b5dce66157a80a42751c0b8))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`75964d6`](https://github.com/anaticulae/jamer/commit/75964d62e2e7ec199401936a92924b5978804098))
+
 
 ## v0.5.3 (2022-10-16)
 
-### Fix
+### Bug Fixes
 
-* adjust interface after upgrading (62a7ba0a0a32)
+- **freestyle**: Adjust interface after upgrading
+  ([`62a7ba0`](https://github.com/anaticulae/jamer/commit/62a7ba0a0a3286635eb774ddd62d2fea36db6467))
 
-### Chore
+### Chores
 
-* enable timeout (7a809d953ba2)
-* upgrade requirements.txt (c44c95841b07)
+- **baw**: Enable timeout
+  ([`7a809d9`](https://github.com/anaticulae/jamer/commit/7a809d953ba21c83280352b6051f4831d3b00b2f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c44c958`](https://github.com/anaticulae/jamer/commit/c44c95841b0768ecfdf43856d429d00e2b06602b))
+
+### Testing
+
+- **freestyle**: Verify long white paged pdf
+  ([`17d707d`](https://github.com/anaticulae/jamer/commit/17d707daa8f0d3261c552823785ad19c9383708f))
+
 
 ## v0.5.2 (2022-10-12)
 
-### Chore
+### Chores
 
-* use ghost image (9a1cd12bf620)
-* convert nightly to all (8395f9ad7bfc)
-* do not run in privileged mode (b36fbcc02def)
-* upgrade requirements.txt (afaa82fb78ee)
+- **Jenkins**: Convert nightly to all
+  ([`8395f9a`](https://github.com/anaticulae/jamer/commit/8395f9ad7bfcfdcca3704406f86e68efeebbdd07))
 
-## 0.5.1
+- **Jenkins**: Do not run in privileged mode
+  ([`b36fbcc`](https://github.com/anaticulae/jamer/commit/b36fbcc02def5daaa6c6a3b2415b429749c5cc00))
 
-### Chore
+- **Jenkins**: Use ghost image
+  ([`9a1cd12`](https://github.com/anaticulae/jamer/commit/9a1cd12bf6202576c7dc55d4a94555315a0ce98c))
 
-* add Jenkinsfile (fc66f9d99ce0)
-* upgrade requirements.txt (eb3da1ee3c1d)
+- **requirements**: Upgrade requirements.txt
+  ([`afaa82f`](https://github.com/anaticulae/jamer/commit/afaa82fb78ee89f889eced3b6086e973c9a872fd))
 
-## v0.5.0
+### Refactoring
 
-### Feature
+- **linter**: Solve linter warning
+  ([`60fcbb1`](https://github.com/anaticulae/jamer/commit/60fcbb19985db7427bc1a4eae13acf80be46247d))
 
-* move pdfcat (df18647b0bc3)
+- **pdf**: Solve linter warning
+  ([`c71266f`](https://github.com/anaticulae/jamer/commit/c71266f2b87d328916202b331017901367488d41))
+
+
+## v0.5.1 (2022-09-22)
+
+### Chores
+
+- **ci**: Add Jenkinsfile
+  ([`fc66f9d`](https://github.com/anaticulae/jamer/commit/fc66f9d99ce076d5ed0543af4683483678755630))
+
+- **requirements**: Upgrade requirements.txt
+  ([`eb3da1e`](https://github.com/anaticulae/jamer/commit/eb3da1ee3c1d60e32bb2dc9402c7a9b253466f0f))
+
+### Code Style
+
+- **changelog**: Adjust spelling
+  ([`6d66cf2`](https://github.com/anaticulae/jamer/commit/6d66cf246eb12f7155ff7e543d75280c39a7da28))
+
+### Testing
+
+- **optimize**: Skip test if ghost is not installed
+  ([`0449f11`](https://github.com/anaticulae/jamer/commit/0449f118a00833b94c7d09e294e9b71f8d860836))
+
+- **refactor**: Use utilatest shortcuts
+  ([`20878ab`](https://github.com/anaticulae/jamer/commit/20878ab163955d2c9f17d724dc51e9f2df627939))
+
+
+## v0.5.0 (2022-07-28)
+
+### Chores
+
+- **config**: Move config
+  ([`9f17400`](https://github.com/anaticulae/jamer/commit/9f17400166454b0f01461d5af9c17240baeb59a1))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bb841aa`](https://github.com/anaticulae/jamer/commit/bb841aa538e9d671a7432848679259720506c7fd))
+
+- **test**: Keep build fast
+  ([`ed34418`](https://github.com/anaticulae/jamer/commit/ed344188ffae5e336572d735037b8fd0cea37a24))
 
 ### Documentation
 
-* adjust modules path (09e660d7bdd7)
-* Happy New Year! (93ab83950a65)
+- **copyright**: Happy New Year!
+  ([`93ab839`](https://github.com/anaticulae/jamer/commit/93ab83950a65bfb58fc6b9503129a042df97c2f3))
 
-## v0.4.0
+- **fix**: Adjust modules path
+  ([`09e660d`](https://github.com/anaticulae/jamer/commit/09e660d7bdd7d31d51973e91efdfd7adf14c5fff))
 
-### Feature
+### Features
 
-* add cli to optimize pdf file size (bb05fbb3160d)
-* add method to optimize pdf file with ghost script (56875fe34012)
-* add operation to reduce pdf file size (9b2b5e752c79)
+- **cat**: Move pdfcat
+  ([`df18647`](https://github.com/anaticulae/jamer/commit/df18647b0bc3c422e95c2dc3b4ed9fce315ea4a3))
 
-## v0.3.1
+### Refactoring
 
-## v0.3.0
+- **imports**: Adjust to new PyPDF2
+  ([`45e50b1`](https://github.com/anaticulae/jamer/commit/45e50b163d4400987e0c28dcf3809a95e74289cc))
 
-### Feature
+### Testing
 
-* add flag to print text document information (3c6eb73c3de9)
-* make error handler more informative (1b96e799773d)
-* add option to select text content (659a32b94a0a)
-* add option to skip empty pages (caf5b7ebd1ef)
+- **cli**: Increase test coverage
+  ([`b720104`](https://github.com/anaticulae/jamer/commit/b7201044e2bf24b593aadbeb97b9c3ba49072ffb))
 
-### Fix
+- **optimize**: Increase test coverage
+  ([`e7c51c6`](https://github.com/anaticulae/jamer/commit/e7c51c6e61b5f220251c5c421553aae852637fe5))
 
-* improve interface (436a9115c477)
+- **refactor**: Simplify test code
+  ([`a94f78a`](https://github.com/anaticulae/jamer/commit/a94f78ade19d6713f0f56095670d352c299fc555))
 
-## v0.2.19
+- **refactor**: Use new test runner
+  ([`26fb574`](https://github.com/anaticulae/jamer/commit/26fb5743f62beb088d096d96c8c6aa7a013c91f0))
 
-### Documentation
 
-* Happy New Year! (25f4e96e4c4f)
+## v0.4.0 (2021-08-20)
 
-## v0.2.18
+### Chores
 
-## v0.2.17
+- **project**: Adjust project config name
+  ([`413a74d`](https://github.com/anaticulae/jamer/commit/413a74ddd32e0f36673b2a27ff27783f276c03ad))
 
-## v0.2.16
+- **refactor**: Cleanup setup file
+  ([`cd0d8b6`](https://github.com/anaticulae/jamer/commit/cd0d8b69facb22d091db1bd3656b41949ba0c56c))
 
-## v0.2.15
+- **requirements**: Upgrade requirements.txt
+  ([`77d6ce6`](https://github.com/anaticulae/jamer/commit/77d6ce6384c35428d29f9b37815a7403f73d88ac))
 
-## v0.2.14
+- **requirements**: Upgrade requirements.txt
+  ([`bf6b032`](https://github.com/anaticulae/jamer/commit/bf6b0322079c0ef20981489f70145dcf61ce99b3))
 
-## v0.2.13
+### Features
 
-## v0.2.12
+- **pdfsmall**: Add cli to optimize pdf file size
+  ([`bb05fbb`](https://github.com/anaticulae/jamer/commit/bb05fbb3160da6eb503a7d2cddfa0dbd7904a444))
 
-## v0.2.11
+- **pdfsmall**: Add operation to reduce pdf file size
+  ([`9b2b5e7`](https://github.com/anaticulae/jamer/commit/9b2b5e752c79b561dcfdfe1f7e191428fb9fd362))
 
-## v0.2.10
+- **small**: Add method to optimize pdf file with ghost script
+  ([`56875fe`](https://github.com/anaticulae/jamer/commit/56875fe340122a1cd4df2aba263908ac8475a1ff))
 
-## v0.2.9
 
-## v0.2.8
+## v0.3.1 (2021-06-21)
 
-## v0.2.7
+### Chores
 
-## v0.2.6
+- **requirements**: Make requirements less strict
+  ([`0e61894`](https://github.com/anaticulae/jamer/commit/0e61894be53504cab352b7d9e71a93be19583a45))
 
-## v0.2.5
+- **requirements**: Upgrade PyPDF2
+  ([`6ae120b`](https://github.com/anaticulae/jamer/commit/6ae120bb45a9bfead2073804dc127f95a4b4fe7e))
 
-## v0.2.4
 
-## v0.2.3
+## v0.3.0 (2021-06-21)
 
-## v0.2.2
+### Bug Fixes
 
-## v0.2.1
+- **jam**: Improve interface
+  ([`436a911`](https://github.com/anaticulae/jamer/commit/436a9115c477e80b4e07d559003a328830e2d81f))
 
-## v0.2.0
+### Chores
 
-### Feature
+- **refactor**: Cleanup test data management
+  ([`dd2a4c3`](https://github.com/anaticulae/jamer/commit/dd2a4c3bdaf4d10765306009e7adb68efc1930b5))
 
-* extend public API (00bf2e67a6a8)
-* add method to create pdf file with empty blank pages (4c6b0dda8797)
+- **requirements**: Upgrade requirements.txt
+  ([`d2814eb`](https://github.com/anaticulae/jamer/commit/d2814eb10090cba3c3420ca8351d6d71fec292ce))
 
-## v0.1.23
+- **resources**: Add scaled pdf example
+  ([`b2f803c`](https://github.com/anaticulae/jamer/commit/b2f803ca6d3564c1513b150ff1b9308c833e9b4d))
 
-## v0.1.22
+### Features
 
-## v0.1.21
+- **cli**: Add flag to print text document information
+  ([`3c6eb73`](https://github.com/anaticulae/jamer/commit/3c6eb73c3de9aeac745a83822b07d3fe24e08f0f))
 
-## v0.1.20
+- **pdf**: Add option to skip empty pages
+  ([`caf5b7e`](https://github.com/anaticulae/jamer/commit/caf5b7ebd1ef75b2c481a9157cdc3822defcc51a))
 
-## v0.1.19
+- **script**: Add option to select text content
+  ([`659a32b`](https://github.com/anaticulae/jamer/commit/659a32b94a0acec4b325b8f267a7cc09f075022a))
 
-## v0.1.18
+- **script**: Make error handler more informative
+  ([`1b96e79`](https://github.com/anaticulae/jamer/commit/1b96e799773d5e51185d6f6701ba42e588427af2))
 
-## v0.1.17
+### Refactoring
 
-## v0.1.16
+- **code**: Simplify code
+  ([`e8868a2`](https://github.com/anaticulae/jamer/commit/e8868a290aa96bae88933c05a2926efe251d0ca1))
 
-## v0.1.15
+### Testing
 
-## v0.1.14
+- **refactor**: Improve code style
+  ([`52614ef`](https://github.com/anaticulae/jamer/commit/52614ef68a50299b7cc2d8031683f8acf984244f))
 
-## v0.1.13
+- **resources**: Add simple select example
+  ([`a357d43`](https://github.com/anaticulae/jamer/commit/a357d43ee3d42ade9f9cd44476b8e51279e16843))
 
-## v0.1.12
+- **style**: Improve code style
+  ([`bd0817f`](https://github.com/anaticulae/jamer/commit/bd0817f0fb7bdfd7291e7d29b36b00714f17e9c7))
 
-## v0.1.11
 
-## v0.1.10
+## v0.2.19 (2021-05-19)
 
-## v0.1.9
+### Chores
 
-## v0.1.8
+- **requirements**: Make requirements less strict
+  ([`ea6e4b3`](https://github.com/anaticulae/jamer/commit/ea6e4b3c958f4534060ce81adcee99fccbd0e60b))
 
-## v0.1.7
-
-### Fix
-
-* rename files to avoid collecting by doctest (bb808461a8c0)
-
-## v0.1.6
-
-## v0.1.5
-
-## v0.1.4
-
-## v0.1.3
-
-## v0.1.2
-
-## v0.1.1
-
-### Feature
-
-* add PageHook to support deleting pages (d299690b92c8)
-* write result of processed --script to -o (532caeb7ed27)
-* add --script parameter to run script on given resource (79d11232b585)
-* ensure to have a file as input -i (ffbe63fe7cd6)
-* add first draft to run internal python source code (7478378a027b)
-
-### Fix
-
-* add workaround to avoid pylint collecting error (3162eda09b93)
+- **requirements**: Upgrade requirements.txt
+  ([`29abe3d`](https://github.com/anaticulae/jamer/commit/29abe3ddc89011f7e86a390fbeba406a4d63723b))
 
 ### Documentation
 
-* Happy New Year! (3e89b638692e)
-* extend script module description (2109487fc435)
+- **copyright**: Happy New Year!
+  ([`25f4e96`](https://github.com/anaticulae/jamer/commit/25f4e96e4c4fc2f0bfbab97693f06395336861c6))
 
-## v0.1.0
 
-### Feature
+## v0.2.18 (2020-08-27)
 
-* remove unused code (2e997d662489)
-* support -o to write pdf to a special file name (e07f8a65fb59)
-* extend cli with --switch to change pages with each other (e6bed14dd5fc)
-* replace --pages with command specific parameter (6893e99837ce)
-* add method to switch pages with each other (006851926249)
-* ensure correct input path (c6fd65491f3b)
-* add parameter --remove to delete several pages (7839b7456970)
-* add method to remove and select pdf pages (88e136a01efa)
+### Chores
 
-## v0.0.0 Initial release
+- **requirements**: Upgrade requirements.txt
+  ([`33f3d1c`](https://github.com/anaticulae/jamer/commit/33f3d1cf4a8a97a8c82bf3a1f0a2a14fc4eefa41))
 
+
+## v0.2.17 (2020-07-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9f77867`](https://github.com/anaticulae/jamer/commit/9f778678a0b34d973da881882270a37e04821ba2))
+
+
+## v0.2.16 (2020-07-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`aae9801`](https://github.com/anaticulae/jamer/commit/aae9801ef65279fee67a7195601cd6e5dcbf83c5))
+
+
+## v0.2.15 (2020-07-15)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b51822a`](https://github.com/anaticulae/jamer/commit/b51822a60dc1c719c70ebc4b839f8677275cba54))
+
+
+## v0.2.14 (2020-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d77be91`](https://github.com/anaticulae/jamer/commit/d77be91fddb316754246fdebba9b6d73087dbe8c))
+
+
+## v0.2.13 (2020-07-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6079c4c`](https://github.com/anaticulae/jamer/commit/6079c4c1a1f8abf5e19f5d263cfb5214f82f4bbf))
+
+
+## v0.2.12 (2020-06-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`276d5af`](https://github.com/anaticulae/jamer/commit/276d5afe798f497ed195dfc2c6952f99576f5bec))
+
+
+## v0.2.11 (2020-06-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ceab046`](https://github.com/anaticulae/jamer/commit/ceab0460f410d81a34ec2ed963dafc96c27494b6))
+
+
+## v0.2.10 (2020-06-21)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1bae194`](https://github.com/anaticulae/jamer/commit/1bae194cd1d7635855ba3ea9e0ad44b3ad7ac958))
+
+
+## v0.2.9 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`44172de`](https://github.com/anaticulae/jamer/commit/44172dec3a425992ecaaab407121baff6cb3bb32))
+
+
+## v0.2.8 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ee5b2b9`](https://github.com/anaticulae/jamer/commit/ee5b2b9cbe6a30eecf54b61be0310fa43f3de228))
+
+
+## v0.2.7 (2020-06-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f52422b`](https://github.com/anaticulae/jamer/commit/f52422bf5a6260c88e5d647449ec22e183e69ef9))
+
+
+## v0.2.6 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3c7fc05`](https://github.com/anaticulae/jamer/commit/3c7fc0532eda5d90aa5f4a9f5ec18f468f5c613f))
+
+
+## v0.2.5 (2020-05-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`24e62d9`](https://github.com/anaticulae/jamer/commit/24e62d99d388149c020ebc7382911ed4d16102a4))
+
+
+## v0.2.4 (2020-05-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2d8732d`](https://github.com/anaticulae/jamer/commit/2d8732d94ef0999ae7b2bfc2546cec4020fcea1b))
+
+
+## v0.2.3 (2020-05-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e9d190c`](https://github.com/anaticulae/jamer/commit/e9d190c2a605b1d5e17d091612d0de4c7868e14e))
+
+
+## v0.2.2 (2020-05-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ab418f4`](https://github.com/anaticulae/jamer/commit/ab418f4ec15bb8d2378e42530580f00a2af7ca72))
+
+
+## v0.2.1 (2020-05-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b152efb`](https://github.com/anaticulae/jamer/commit/b152efb668979a7e4efe3858dacda5831ea2019f))
+
+
+## v0.2.0 (2020-05-06)
+
+### Features
+
+- **API**: Extend public API
+  ([`00bf2e6`](https://github.com/anaticulae/jamer/commit/00bf2e67a6a8df2a17925e4381640126efacb4ba))
+
+- **freestyle**: Add method to create pdf file with empty blank pages
+  ([`4c6b0dd`](https://github.com/anaticulae/jamer/commit/4c6b0dda87971a904291d95a9ad1ffa2c3878d09))
+
+
+## v0.1.23 (2020-05-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7c54116`](https://github.com/anaticulae/jamer/commit/7c541161ac7b35debf56d21ec57358c0de78e8fe))
+
+
+## v0.1.22 (2020-04-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7b6ba78`](https://github.com/anaticulae/jamer/commit/7b6ba780f61b13705149d63617e02dd007531c75))
+
+
+## v0.1.21 (2020-04-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`91113f5`](https://github.com/anaticulae/jamer/commit/91113f53bddc72c922366d516a6b28699c9865cd))
+
+
+## v0.1.20 (2020-04-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a237d94`](https://github.com/anaticulae/jamer/commit/a237d942bb28b7d4fa550fa3722c92517a4571f1))
+
+
+## v0.1.19 (2020-04-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`07bbeb5`](https://github.com/anaticulae/jamer/commit/07bbeb52236bbee6cc83d042d640879f1a39ec04))
+
+
+## v0.1.18 (2020-04-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c55d775`](https://github.com/anaticulae/jamer/commit/c55d775ad2d8d4ad72ca600bfd551493568d3c1c))
+
+
+## v0.1.17 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`42385bb`](https://github.com/anaticulae/jamer/commit/42385bba7f4eefae04d1bd3c0b3ee5a8ba6eaaeb))
+
+
+## v0.1.16 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3a695aa`](https://github.com/anaticulae/jamer/commit/3a695aa43f1605f65413b3a85da1bb4d2f2dc0cc))
+
+
+## v0.1.15 (2020-04-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4fd6700`](https://github.com/anaticulae/jamer/commit/4fd670038bbc82b910b415252ae1c1f414f32eb1))
+
+
+## v0.1.14 (2020-04-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ec65834`](https://github.com/anaticulae/jamer/commit/ec65834574e7e4e6201a113a227efd6c7758fd46))
+
+
+## v0.1.13 (2020-04-04)
+
+### Chores
+
+- **requirements**: Reduce dependencies
+  ([`9d815f4`](https://github.com/anaticulae/jamer/commit/9d815f41e41e22d973415f8131220ac7e3a928eb))
+
+- **requirements**: Upgrade requirements.txt
+  ([`996c9fa`](https://github.com/anaticulae/jamer/commit/996c9fa71d62815955310bf17149074e75de3420))
+
+
+## v0.1.12 (2020-03-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`eee0383`](https://github.com/anaticulae/jamer/commit/eee0383e27b03c4a083d4f0c6bf1523af10228e0))
+
+
+## v0.1.11 (2020-03-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`21867ad`](https://github.com/anaticulae/jamer/commit/21867ad7a685b92ca80c77e0dbb053d6236c6079))
+
+
+## v0.1.10 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8a15c03`](https://github.com/anaticulae/jamer/commit/8a15c03178346a3b41b57408bb89fe88ebfad8bd))
+
+
+## v0.1.9 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`039ce28`](https://github.com/anaticulae/jamer/commit/039ce282650234f74db7b065c8f43dd0c9ffd402))
+
+
+## v0.1.8 (2020-03-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6ec1332`](https://github.com/anaticulae/jamer/commit/6ec1332c8df0917afca194348ab14fc2a6a9294b))
+
+
+## v0.1.7 (2020-03-01)
+
+### Bug Fixes
+
+- **doctest**: Rename files to avoid collecting by doctest
+  ([`bb80846`](https://github.com/anaticulae/jamer/commit/bb808461a8c03fa1161013376428b8e1857ed0a4))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`10bb881`](https://github.com/anaticulae/jamer/commit/10bb881f0ccaa188650322aa4c63031e25728c9e))
+
+
+## v0.1.6 (2020-02-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2132f8b`](https://github.com/anaticulae/jamer/commit/2132f8bd8f0f3088ca5fbcbc123abd2dfe932b5a))
+
+
+## v0.1.5 (2020-02-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7482feb`](https://github.com/anaticulae/jamer/commit/7482feb9b6fd9ca16d08964df4fafb004380af61))
+
+
+## v0.1.4 (2020-02-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d7cc105`](https://github.com/anaticulae/jamer/commit/d7cc1057412ec5586b6679b5ac279ceadb04a467))
+
+
+## v0.1.3 (2020-01-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`56f8d2d`](https://github.com/anaticulae/jamer/commit/56f8d2d190aaddcb58251fde6ed42ef35c34c4df))
+
+
+## v0.1.2 (2020-01-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`62b9f0b`](https://github.com/anaticulae/jamer/commit/62b9f0b5fae7570372f33e56a777dbf38c17b31b))
+
+
+## v0.1.1 (2020-01-02)
+
+### Bug Fixes
+
+- **pylint**: Add workaround to avoid pylint collecting error
+  ([`3162eda`](https://github.com/anaticulae/jamer/commit/3162eda09b934f619474288ff85ee2fd52dcc29b))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`06a3078`](https://github.com/anaticulae/jamer/commit/06a30789991f9995840f29daf9dca0a3756a2a1b))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`3e89b63`](https://github.com/anaticulae/jamer/commit/3e89b638692e57b923d30a2f372904b401aeaf99))
+
+- **script**: Extend script module description
+  ([`2109487`](https://github.com/anaticulae/jamer/commit/2109487fc4352c864419a34ae311d3841f7ef6f5))
+
+### Features
+
+- **cli**: Add --script parameter to run script on given resource
+  ([`79d1123`](https://github.com/anaticulae/jamer/commit/79d11232b585df2f8021216bcf4a8f6a599960dc))
+
+- **cli**: Ensure to have a file as input -i
+  ([`ffbe63f`](https://github.com/anaticulae/jamer/commit/ffbe63fe7cd647349572cc406c342554b1dae6f7))
+
+- **script**: Add first draft to run internal python source code
+  ([`7478378`](https://github.com/anaticulae/jamer/commit/7478378a027b21dbeec3ee6aa7175fe60830e60f))
+
+- **script**: Add PageHook to support deleting pages
+  ([`d299690`](https://github.com/anaticulae/jamer/commit/d299690b92c88b4c96a08353de89abb54fcc6e20))
+
+- **script**: Write result of processed --script to -o
+  ([`532caeb`](https://github.com/anaticulae/jamer/commit/532caeb7ed274ef72f3a43ad3ae56f16787ed80d))
+
+
+## v0.1.0 (2019-12-06)
+
+### Chores
+
+- **requirements**: Add PyPDF2 library
+  ([`839c657`](https://github.com/anaticulae/jamer/commit/839c657564f6ec9c15f8dfd5047a9e033c542bad))
+
+- **requirements**: Add test data provider
+  ([`3d92a31`](https://github.com/anaticulae/jamer/commit/3d92a3158ef28c0fbb82d5d41205ea9089547221))
+
+### Features
+
+- **cli**: Add parameter --remove to delete several pages
+  ([`7839b74`](https://github.com/anaticulae/jamer/commit/7839b74569706d69ba285a0827d795a083041c3f))
+
+- **cli**: Extend cli with --switch to change pages with each other
+  ([`e6bed14`](https://github.com/anaticulae/jamer/commit/e6bed14dd5fcf99e3976807842fb29c314266351))
+
+- **cli**: Remove unused code
+  ([`2e997d6`](https://github.com/anaticulae/jamer/commit/2e997d662489c11a2facd909a6614863d7772ae4))
+
+- **cli**: Replace --pages with command specific parameter
+  ([`6893e99`](https://github.com/anaticulae/jamer/commit/6893e99837ce433646b5b3c282bedd57e9a459ed))
+
+- **cli**: Support -o to write pdf to a special file name
+  ([`e07f8a6`](https://github.com/anaticulae/jamer/commit/e07f8a65fb593065cf46f170d49ffd2c42f18560))
+
+- **pdf**: Add method to remove and select pdf pages
+  ([`88e136a`](https://github.com/anaticulae/jamer/commit/88e136a01efa6dce5c9d2a36a41783bc05e8a2e1))
+
+- **pdf**: Add method to switch pages with each other
+  ([`0068519`](https://github.com/anaticulae/jamer/commit/0068519262499a6f38b65cf25cf34eeaabf2f345))
+
+- **pdf**: Ensure correct input path
+  ([`c6fd654`](https://github.com/anaticulae/jamer/commit/c6fd65491f3bca64d8ea019344daf3f3b5fa1f71))
+
+### Refactoring
+
+- **style**: Remove unused imports
+  ([`102920b`](https://github.com/anaticulae/jamer/commit/102920bb383f9cd7bec8d5b8b32f01343bdf1869))
+
+### Testing
+
+- **resources**: Run test data generator before long running tests
+  ([`358cb66`](https://github.com/anaticulae/jamer/commit/358cb66b6334f23e07e0c809c85018b697efd597))
+
+
+## v0.0.0 (2019-12-05)
+
+- Initial Release
