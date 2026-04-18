@@ -38,6 +38,7 @@ pdfsmall = "pdfsmall.cli:main"
 [project.optional-dependencies]
 dev = [
     "utilotest>=1.0.1,<2.0.0",
+    "pytest-timeout>=2.4.0,<3.0.0",
     # power==2.20.1
 ]
 
