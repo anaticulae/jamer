@@ -10,13 +10,13 @@
 import functools
 
 import power
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import jamer.cat
 
 small = functools.partial(
-    utilatest.run_cov,
+    utilotest.run_cov,
     process='pdfcat',
     main=jamer.cat.main,
     expect=True,
@@ -25,8 +25,8 @@ small = functools.partial(
 
 def test_pdfcat(td, mp):
     source = power.MASTER116_PDF
-    before = utila.file_size(source)
+    before = utilo.file_size(source)
     outpath = td.tmpdir.join('small.pdf')
     small(cmd=f'-o {outpath} {source} 0:2', mp=mp)
-    after = utila.file_size(outpath)
+    after = utilo.file_size(outpath)
     assert after < before

@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import jamer
 import tests.resources
@@ -21,7 +21,7 @@ sel page_0.text_5_1360
 
 def test_script_select(td):
     script = td.tmpdir.join('source.py')
-    utila.file_create(script, SELECT)
+    utilo.file_create(script, SELECT)
     outpath = td.tmpdir.join('output.pdf')
     assert jamer.pagenumber(tests.resources.SCALED_PDF) == 2
     jamer.run(

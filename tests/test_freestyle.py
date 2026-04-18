@@ -8,7 +8,7 @@
 # =============================================================================
 
 import pytest
-import utilatest
+import utilotest
 
 import jamer
 
@@ -20,7 +20,7 @@ def test_write_blank_pages(td):
 
 
 @pytest.mark.timeout(120)
-@utilatest.nightly
+@utilotest.nightly
 def test_write_blank_verylong(td):
     destination = td.tmpdir.join('verylong.pdf')
     pagecount = 10000

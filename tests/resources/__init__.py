@@ -7,20 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import jamer
 
-RESOURCES = utila.join(jamer.ROOT, 'tests/resources', exist=True)
+RESOURCES = utilo.join(jamer.ROOT, 'tests/resources', exist=True)
 
-SCALED_PDF = utila.join(RESOURCES, 'scaled.pdf', exist=True)
+SCALED_PDF = utilo.join(RESOURCES, 'scaled.pdf', exist=True)
 
-EXAMPLE = utila.join(jamer.ROOT, 'tests/example', exist=True)
-HELLO_WORLD = utila.join(EXAMPLE, 'helloworld.py', exist=True)
+EXAMPLE = utilo.join(jamer.ROOT, 'tests/example', exist=True)
+HELLO_WORLD = utilo.join(EXAMPLE, 'helloworld.py', exist=True)
 
-SCRIPT_SIMPLE_DELETE = utila.join(EXAMPLE, 'simpledelete.pys', exist=True)
-SCRIPT_SIMPLE_CHANGE = utila.join(EXAMPLE, 'simplechange.pys', exist=True)
-SCRIPT_SIMPLE_SELECT = utila.join(EXAMPLE, 'simpleselect.pys', exist=True)
+SCRIPT_SIMPLE_DELETE = utilo.join(EXAMPLE, 'simpledelete.pys', exist=True)
+SCRIPT_SIMPLE_CHANGE = utilo.join(EXAMPLE, 'simplechange.pys', exist=True)
+SCRIPT_SIMPLE_SELECT = utilo.join(EXAMPLE, 'simpleselect.pys', exist=True)
 
 REQUIRED_RESOURCES = [
     HELLO_WORLD,

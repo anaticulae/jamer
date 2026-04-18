@@ -10,21 +10,21 @@
 import os
 import sys
 
-import utila
-import utila.cli
+import utilo
+import utilo.cli
 
 import pdfsmall
 import pdfsmall.optimize
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     # evaluate cli
     inpath, outpath = inout()
     # run ghost script
     pdfsmall.optimize.ghost_small(inpath, outpath)
-    utila.log(f'done: {outpath}')
-    sys.exit(utila.SUCCESS)
+    utilo.log(f'done: {outpath}')
+    sys.exit(utilo.SUCCESS)
 
 
 HEADER = b'%PDF-1.'
@@ -38,7 +38,7 @@ def ispdf(path: str) -> bool:
     TODO: REPLACE WITH PDFINFO
     """
     try:
-        header = utila.file_read_binary(path, size=len(HEADER))
+        header = utilo.file_read_binary(path, size=len(HEADER))
     except PermissionError:
         return False
     if not header == HEADER:
@@ -47,9 +47,9 @@ def ispdf(path: str) -> bool:
 
 
 def inout():
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=[],
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             cacheflag=False,
             inputparameter=True,
             multiprocessed=False,
@@ -61,12 +61,12 @@ def inout():
         ),
         version=pdfsmall.__version__,
     )
-    args = utila.parse(parser)
-    inpath, outpath = utila.sources(args, singleinput=True)  # pylint:disable=W0632
+    args = utilo.parse(parser)
+    inpath, outpath = utilo.sources(args, singleinput=True)  # pylint:disable=W0632
     inpath = inpath[0]
     if not ispdf(inpath):
-        utila.error(f'require single pdf file: {inpath}')
-        sys.exit(utila.FAILURE)
-    name = f'{utila.file_name(inpath)}_opt.pdf'
+        utilo.error(f'require single pdf file: {inpath}')
+        sys.exit(utilo.FAILURE)
+    name = f'{utilo.file_name(inpath)}_opt.pdf'
     outpath = os.path.join(outpath, name)
     return inpath, outpath

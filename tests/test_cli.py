@@ -11,7 +11,7 @@ import os
 
 import power
 import pytest
-import utilatest
+import utilotest
 
 import jamer
 import tests
@@ -98,7 +98,7 @@ def test_run_remove_to_output(td, mp):
     assert pagenumbers == 62
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_run_script(td, mp, capsys):
     outpath = td.tmpdir.join('abc.pdf')
 
@@ -106,7 +106,7 @@ def test_run_script(td, mp, capsys):
            f'--script {tests.resources.HELLO_WORLD}')
     tests.run(cmd, mp=mp)
 
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     assert 'hello world' in stdout
 
     assert os.path.exists(outpath), str(outpath)
@@ -117,7 +117,7 @@ def test_printtext(td, mp, capsys):  # pylint:disable=W0613
     cmd = f'-i {source} --printtext'
     tests.run(cmd, mp=mp)
 
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     assert 'page_0' in stdout
     assert 'page_1' in stdout
     assert 'page_2' not in stdout

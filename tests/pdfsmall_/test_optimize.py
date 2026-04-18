@@ -10,15 +10,15 @@
 import functools
 
 import power
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import pdfsmall.cli
 import pdfsmall.optimize
 import tests.pdfsmall_
 
 small = functools.partial(
-    utilatest.run_cov,
+    utilotest.run_cov,
     process='pdfsmall',
     main=pdfsmall.cli.main,
     expect=True,
@@ -26,22 +26,22 @@ small = functools.partial(
 
 
 @tests.pdfsmall_.hasghost
-@utilatest.nightly
+@utilotest.nightly
 def test_small(td, mp):
     source = power.MASTER116_PDF
-    before = utila.file_size(source)
+    before = utilo.file_size(source)
     outpath = td.tmpdir.join('small.pdf')
     small(cmd=f'-i {source} -o {outpath}', mp=mp)
-    after = utila.file_size(outpath)
+    after = utilo.file_size(outpath)
     assert after < before
 
 
 @tests.pdfsmall_.hasghost
-@utilatest.longrun
+@utilotest.longrun
 def test_ghost(td):
     source = power.MASTER116_PDF
-    before = utila.file_size(source)
+    before = utilo.file_size(source)
     outpath = td.tmpdir.join('small.pdf')
     pdfsmall.optimize.ghost_small(source, outpath)
-    after = utila.file_size(outpath)
+    after = utilo.file_size(outpath)
     assert after < before

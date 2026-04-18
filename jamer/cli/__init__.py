@@ -10,20 +10,20 @@
 import os
 
 import PyPDF2
-import utila
-import utila.cli
+import utilo
+import utilo.cli
 
 import jamer
 import jamer.cli.operation
 import jamer.pdf
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     cmds = list(jamer.cli.operation.CMD)
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=cmds,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             inputparameter=True,
             outputparameter=True,
             pages=False,
@@ -31,7 +31,7 @@ def main():
         ),
         version=jamer.__version__,
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
     inpath, outpath = determine_inputoutput(args)
     validated = validate_resources(inpath, args)
     if validated:
@@ -55,9 +55,9 @@ def determine_inputoutput(args: dict):
     if outpath and outpath.endswith('.pdf'):
         # single output file
         del args['output']
-        inpath, _ = utila.sources(args, singleinput=True)  # pylint:disable=W0632
+        inpath, _ = utilo.sources(args, singleinput=True)  # pylint:disable=W0632
     else:
-        inpath, outpath = utila.sources(args, singleinput=True)  # pylint:disable=W0632
+        inpath, outpath = utilo.sources(args, singleinput=True)  # pylint:disable=W0632
     # support only one input
     inpath = inpath[0] if isinstance(inpath, list) else inpath
     return inpath, outpath
@@ -66,17 +66,17 @@ def determine_inputoutput(args: dict):
 def validate_resources(inpath: str, args: dict):
     pages = extract_pages(args)
     if not os.path.isfile(inpath):
-        utila.error(f'require valid pdf file as input, got: {inpath}')
-        return utila.INVALID_COMMAND
+        utilo.error(f'require valid pdf file as input, got: {inpath}')
+        return utilo.INVALID_COMMAND
     if pages:
         if not PyPDF2.PageRange.valid(pages):
-            utila.error(f'invalid --pages `{pages}` parameter')
-            return utila.INVALID_COMMAND
+            utilo.error(f'invalid --pages `{pages}` parameter')
+            return utilo.INVALID_COMMAND
         pages = parse_pages(pages)
         if not valid_range(inpath, pages):
-            utila.error(f'--pages `{pages}` out of range')
-            return utila.INVALID_COMMAND
-    return utila.SUCCESS
+            utilo.error(f'--pages `{pages}` out of range')
+            return utilo.INVALID_COMMAND
+    return utilo.SUCCESS
 
 
 def extract_pages(args):

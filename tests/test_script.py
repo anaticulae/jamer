@@ -11,8 +11,8 @@ import os
 
 import power
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import jamer.script
 import tests.resources
@@ -42,29 +42,29 @@ del page_0.text_1
 """
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_script_master(td):
     script = td.tmpdir.join('master.py')
-    utila.file_create(script, MASTER)
+    utilo.file_create(script, MASTER)
     outpath = td.tmpdir.join('output.pdf')
     completed = jamer.script.run(
         script,
         document=power.MASTER072_PDF,
         outpath=outpath,
     )
-    assert completed == utila.SUCCESS
+    assert completed == utilo.SUCCESS
     assert os.path.exists(outpath), str(outpath)
 
 
 @pytest.mark.parametrize('code, expected', [
-    pytest.param(EXAMPLE, utila.SUCCESS, id='simple'),
-    pytest.param(SYNTAX_ERROR, utila.FAILURE, id='syntaxerror'),
-    pytest.param(RUNTIME_ERROR, utila.FAILURE, id='runtimeerror'),
+    pytest.param(EXAMPLE, utilo.SUCCESS, id='simple'),
+    pytest.param(SYNTAX_ERROR, utilo.FAILURE, id='syntaxerror'),
+    pytest.param(RUNTIME_ERROR, utilo.FAILURE, id='runtimeerror'),
 ])
-@utilatest.longrun
+@utilotest.longrun
 def test_script_execution(code, expected, td):
     script = td.tmpdir.join('source.py')
-    utila.file_create(script, code)
+    utilo.file_create(script, code)
     outpath = td.tmpdir.join('output.pdf')
     completed = jamer.script.run(
         script,
@@ -78,7 +78,7 @@ def test_script_execution(code, expected, td):
     pytest.param(tests.resources.SCRIPT_SIMPLE_CHANGE, id='change'),
     pytest.param(tests.resources.SCRIPT_SIMPLE_DELETE, id='delete'),
 ])
-@utilatest.longrun
+@utilotest.longrun
 def test_script_execution_simple_changes(path, td, mp):
     outpath = td.tmpdir.join('changed.pdf')
     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'

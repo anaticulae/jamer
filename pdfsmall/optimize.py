@@ -10,7 +10,7 @@
 import os
 
 import PyPDF2
-import utila
+import utilo
 
 
 def small(source: str, destination: str):
@@ -32,4 +32,4 @@ GHOST = 'gswin64c' if os.name == 'nt' else 'gs'
 def ghost_small(source: str, destination: str):
     config = '-sDEVICE=pdfwrite -dBATCH -dNOPAUSE -SAFE'
     cmd = f'{GHOST} {config} -sOutputFile={destination} {source}'
-    utila.run(cmd)
+    utilo.run(cmd)

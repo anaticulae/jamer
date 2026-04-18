@@ -7,27 +7,27 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
-import utila.cli
+import utilo
+import utilo.cli
 
 import jamer.cli
 import jamer.pdf
 import jamer.script
 
 CMD = [
-    utila.cli.Parameter(
+    utilo.cli.Parameter(
         longcut='--remove',
         message='remove defined pages out of document',
     ),
-    utila.cli.Parameter(
+    utilo.cli.Parameter(
         longcut='--switch',
         message='switch pages with each other',
     ),
-    utila.cli.Parameter(
+    utilo.cli.Parameter(
         longcut='--script',
         message='run modification script on resource',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='--printtext',
         message='run modification script on resource',
     ),
@@ -35,10 +35,10 @@ CMD = [
 
 
 def work(inpath: str, outpath: str, pages, args: dict) -> int:
-    result = utila.SUCCESS
+    result = utilo.SUCCESS
     if args['printtext']:
         printtext(inpath, pages)
-        return utila.SUCCESS
+        return utilo.SUCCESS
     if args['--remove']:
         result += remove(inpath, outpath, pages)
     if args['--switch']:
@@ -51,39 +51,39 @@ def work(inpath: str, outpath: str, pages, args: dict) -> int:
 def printtext(inpath: str, pages: tuple) -> int:  # pylint:disable=W0613
     document = jamer.script.Document(inpath)
     for page, content in document.pages().items():
-        utila.log(page)
-        utila.log('[')
+        utilo.log(page)
+        utilo.log('[')
         for item in content.text_stream():
-            utila.log(f'({item[0]}, {item[1]}),', end=' ')
-        utila.log('\n]')
+            utilo.log(f'({item[0]}, {item[1]}),', end=' ')
+        utilo.log('\n]')
 
 
 def remove(source: str, sink: str, pages: tuple) -> int:
-    utila.log(f'remove: {pages}\nfrom: {source}\nresult: {sink}')
+    utilo.log(f'remove: {pages}\nfrom: {source}\nresult: {sink}')
     tmp = jamer.pdf.remove(source, pages)
-    utila.copy_content(tmp, sink)
-    utila.log('completed')
-    return utila.SUCCESS
+    utilo.copy_content(tmp, sink)
+    utilo.log('completed')
+    return utilo.SUCCESS
 
 
 def switch(source: str, sink: str, selected: str) -> int:
     parsed = parse_switch(selected)
     if parsed is None:
-        utila.error(f'invalid switch argument `{selected}`')
-        return utila.INVALID_COMMAND
+        utilo.error(f'invalid switch argument `{selected}`')
+        return utilo.INVALID_COMMAND
 
     switched = jamer.pdf.switch(source, parsed)
-    utila.copy_content(switched, sink)
-    utila.log('completed')
-    return utila.SUCCESS
+    utilo.copy_content(switched, sink)
+    utilo.log('completed')
+    return utilo.SUCCESS
 
 
 def script(source: str, sink: str, scriptpath: str) -> int:
     failure = jamer.script.run(script=scriptpath, document=source, outpath=sink)
     if failure:
         return failure
-    utila.log('completed')
-    return utila.SUCCESS
+    utilo.log('completed')
+    return utilo.SUCCESS
 
 
 def parse_switch(raw) -> list:

@@ -40,7 +40,7 @@ import PyPDF2
 import PyPDF2._utils
 import PyPDF2.constants
 import PyPDF2.generic
-import utila
+import utilo
 
 import jamer
 import jamer.pdf
@@ -70,9 +70,9 @@ def run(script: str, document: str, outpath: str) -> int:
         )
         jamer.pdf.write(outpath, doc.loaded, remove_empty=True)
     except SyntaxError as error:
-        utila.error(error)
-        return utila.FAILURE
-    return utila.SUCCESS if status.ready else utila.FAILURE
+        utilo.error(error)
+        return utilo.FAILURE
+    return utilo.SUCCESS if status.ready else utilo.FAILURE
 
 
 class Document:
@@ -143,17 +143,17 @@ def scriptfile(path: str) -> str:
     Returns:
         Path to generated source code file which contains error handler.
     """
-    loaded = utila.file_read(path)
+    loaded = utilo.file_read(path)
     # ensure indent
     loaded = [
         f'    {prepare(item)}' for item in loaded.splitlines() if item.strip()
     ]
-    loaded = utila.NEWLINE.join(loaded)
+    loaded = utilo.NEWLINE.join(loaded)
     program = PROGRAM % loaded
     with_final = (ERROR_HANDLER % program)
 
-    filepath = utila.tmpfile(jamer.ROOT)
-    utila.file_replace(filepath, with_final)
+    filepath = utilo.tmpfile(jamer.ROOT)
+    utilo.file_replace(filepath, with_final)
     return filepath
 
 
@@ -191,11 +191,11 @@ PROGRAM = """\
 """
 
 ERROR_HANDLER = """\
-import utila
+import utilo
 try:
 %s
 except Exception:
-    utila.print_stacktrace()
+    utilo.print_stacktrace()
     __status.error = True
 else:
     __status.ready = True

@@ -8,11 +8,11 @@
 # =============================================================================
 
 import pytest
-import utila
+import utilo
 
 import pdfsmall.optimize
 
 hasghost = pytest.mark.skipif(
-    not utila.hasprog(pdfsmall.optimize.GHOST),
+    not utilo.hasprog(pdfsmall.optimize.GHOST),
     reason='require ghost',
 )
