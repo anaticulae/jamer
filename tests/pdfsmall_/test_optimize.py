@@ -9,7 +9,8 @@
 
 # import functools
 
-# import hoverpower
+import hoverpower
+
 # import utilo
 # import utilotest
 

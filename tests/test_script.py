@@ -9,7 +9,8 @@
 
 # import os
 
-# import hoverpower
+import hoverpower
+
 # import pytest
 # import utilo
 # import utilotest
