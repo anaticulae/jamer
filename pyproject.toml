@@ -37,8 +37,8 @@ pdfsmall = "pdfsmall.cli:main"
 
 [project.optional-dependencies]
 dev = [
-    "utilotest>=1.0.1,<2.0.0",
-    # power==2.20.1
+    "utilotest>=1.0.2,<2.0.0",
+    "hoverpower==1.1.0",
 ]
 
 [project.urls]
