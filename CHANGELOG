@@ -1,6 +1,33 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-05-02)
+
+### Chores
+
+- **hoverpower**: Add decryption step
+  ([`237e6e2`](https://github.com/anaticulae/jamer/commit/237e6e24f51788f158e67778a238d9ed9bef194a))
+
+- **project**: Enable power
+  ([`6abbb12`](https://github.com/anaticulae/jamer/commit/6abbb1213d75ed56e08b0907ddedc232532eccda))
+
+- **pyproject**: Sort file
+  ([`4ce81dc`](https://github.com/anaticulae/jamer/commit/4ce81dcc90f624bdfe33b2b4c63ef944b43dc8d8))
+
+### Refactoring
+
+- **rename**: Rename power to hoverpower
+  ([`67d1d74`](https://github.com/anaticulae/jamer/commit/67d1d748313148e32c853bd79613c53f8ef9bcdf))
+
+- **tests**: Enable hovepower
+  ([`f4208a2`](https://github.com/anaticulae/jamer/commit/f4208a25925347558b54a26489bacf3d3da3d841))
+
+### Testing
+
+- **enable**: Enable unit tests with hoverpower dependency
+  ([`65a34a2`](https://github.com/anaticulae/jamer/commit/65a34a2c96eb33c79c27685d8bd30297752cf017))
+
+
 ## v1.0.0 (2026-04-18)
 
 ### Bug Fixes
