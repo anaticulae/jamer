@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# import power
+# import hoverpower
 from utilotest import mp  # pylint:disable=W0611
 from utilotest import td  # pylint:disable=W0611
 
@@ -15,4 +15,4 @@ from utilotest import td  # pylint:disable=W0611
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-# power.setup(jamer.ROOT)
+# hoverpower.setup(jamer.ROOT)

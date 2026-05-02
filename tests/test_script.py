@@ -9,7 +9,7 @@
 
 # import os
 
-# import power
+# import hoverpower
 # import pytest
 # import utilo
 # import utilotest
@@ -48,7 +48,7 @@ del page_0.text_1
 #     outpath = td.tmpdir.join('output.pdf')
 #     completed = jamer.script.run(
 #         script,
-#         document=power.MASTER072_PDF,
+#         document=hoverpower.MASTER072_PDF,
 #         outpath=outpath,
 #     )
 #     assert completed == utilo.SUCCESS
@@ -66,7 +66,7 @@ del page_0.text_1
 #     outpath = td.tmpdir.join('output.pdf')
 #     completed = jamer.script.run(
 #         script,
-#         document=power.MASTER072_PDF,
+#         document=hoverpower.MASTER072_PDF,
 #         outpath=outpath,
 #     )
 #     assert completed == expected
@@ -78,5 +78,5 @@ del page_0.text_1
 # @utilotest.longrun
 # def test_script_execution_simple_changes(path, td, mp):
 #     outpath = td.tmpdir.join('changed.pdf')
-#     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --script {path}'
+#     cmd = f'-i {hoverpower.MASTER072_PDF} -o {outpath} --script {path}'
 #     tests.run(cmd, mp=mp)

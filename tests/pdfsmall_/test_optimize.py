@@ -9,7 +9,7 @@
 
 # import functools
 
-# import power
+# import hoverpower
 # import utilo
 # import utilotest
 
@@ -27,7 +27,7 @@
 # @tests.pdfsmall_.hasghost
 # @utilotest.nightly
 # def test_small(td, mp):
-#     source = power.MASTER116_PDF
+#     source = hoverpower.MASTER116_PDF
 #     before = utilo.file_size(source)
 #     outpath = td.tmpdir.join('small.pdf')
 #     small(cmd=f'-i {source} -o {outpath}', mp=mp)
@@ -37,7 +37,7 @@
 # @tests.pdfsmall_.hasghost
 # @utilotest.longrun
 # def test_ghost(td):
-#     source = power.MASTER116_PDF
+#     source = hoverpower.MASTER116_PDF
 #     before = utilo.file_size(source)
 #     outpath = td.tmpdir.join('small.pdf')
 #     pdfsmall.optimize.ghost_small(source, outpath)

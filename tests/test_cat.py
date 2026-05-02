@@ -9,7 +9,7 @@
 
 # import functools
 
-# import power
+# import hoverpower
 # import utilo
 # import utilotest
 
@@ -23,7 +23,7 @@
 # )
 
 # def test_pdfcat(td, mp):
-#     source = power.MASTER116_PDF
+#     source = hoverpower.MASTER116_PDF
 #     before = utilo.file_size(source)
 #     outpath = td.tmpdir.join('small.pdf')
 #     small(cmd=f'-o {outpath} {source} 0:2', mp=mp)

@@ -9,7 +9,7 @@
 
 # import os
 
-# import power
+# import hoverpower
 # import pytest
 # import utilotest
 
@@ -27,11 +27,11 @@
 
 # @pytest.mark.parametrize('cmd', [
 #     ['-i', 'filedoesnotexists.pdf'],
-#     ['-i', power.RESOURCES, '--remove', '1'],
-#     ['-i', power.MASTER072_PDF, '--remove'],
-#     ['-i', power.MASTER072_PDF, '--remove', '0:X'],
-#     ['-i', power.MASTER072_PDF, '--remove', '1000'],
-#     ['-i', power.MASTER072_PDF, '--switch', 'notasplit'],
+#     ['-i', hoverpower.RESOURCES, '--remove', '1'],
+#     ['-i', hoverpower.MASTER072_PDF, '--remove'],
+#     ['-i', hoverpower.MASTER072_PDF, '--remove', '0:X'],
+#     ['-i', hoverpower.MASTER072_PDF, '--remove', '1000'],
+#     ['-i', hoverpower.MASTER072_PDF, '--switch', 'notasplit'],
 # ])
 # @pytest.mark.usefixtures('td')
 # def test_run_external_failure(cmd, mp):
@@ -39,18 +39,18 @@
 
 # def test_run_non_existing_output(td, mp):
 #     outpath = td.tmpdir.join('abc/dfc')
-#     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
+#     cmd = f'-i {hoverpower.MASTER072_PDF} -o {outpath} --remove 1'
 #     tests.run(cmd, mp=mp)
 
 #     outpath = td.tmpdir.join('abc/output.pdf')
-#     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 1'
+#     cmd = f'-i {hoverpower.MASTER072_PDF} -o {outpath} --remove 1'
 #     tests.run(cmd, mp=mp)
 
 # def test_run_remove(td, mp):
-#     cmd = ['-i', power.MASTER072_PDF, '--remove', '0:10']
+#     cmd = ['-i', hoverpower.MASTER072_PDF, '--remove', '0:10']
 #     tests.run(cmd, mp=mp)
 
-#     _, name = os.path.split(power.MASTER072_PDF)
+#     _, name = os.path.split(hoverpower.MASTER072_PDF)
 #     outpath = td.tmpdir.join(name)
 #     assert os.path.exists(outpath), str(outpath)
 
@@ -62,17 +62,17 @@
 #     ('10,20', [10, 20], [20, 10]),
 # ])
 # def test_run_switch(td, mp, raw, before, after):
-#     cmd = ['-i', power.MASTER072_PDF, '--switch', raw]
+#     cmd = ['-i', hoverpower.MASTER072_PDF, '--switch', raw]
 #     tests.run(cmd, mp=mp)
 
-#     _, name = os.path.split(power.MASTER072_PDF)
+#     _, name = os.path.split(hoverpower.MASTER072_PDF)
 #     outpath = td.tmpdir.join(name)
 #     assert os.path.exists(outpath), str(outpath)
 
 #     pagenumbers = jamer.pdf.pagenumber(outpath)
 #     assert pagenumbers == 72
 
-#     hashed = jamer.pdf.hashcontent(power.MASTER072_PDF, before)
+#     hashed = jamer.pdf.hashcontent(hoverpower.MASTER072_PDF, before)
 
 #     # ensure that page flip does work
 #     after_hashed = jamer.pdf.hashcontent(outpath, after)
@@ -84,7 +84,7 @@
 # def test_run_remove_to_output(td, mp):
 #     outpath = td.tmpdir.join('removed.pdf')
 
-#     cmd = f'-i {power.MASTER072_PDF} -o {outpath} --remove 0:10'
+#     cmd = f'-i {hoverpower.MASTER072_PDF} -o {outpath} --remove 0:10'
 #     tests.run(cmd, mp=mp)
 
 #     assert os.path.exists(outpath), str(outpath)
@@ -95,7 +95,7 @@
 # def test_run_script(td, mp, capsys):
 #     outpath = td.tmpdir.join('abc.pdf')
 
-#     cmd = (f'-i {power.MASTER072_PDF} -o {outpath} '
+#     cmd = (f'-i {hoverpower.MASTER072_PDF} -o {outpath} '
 #            f'--script {tests.resources.HELLO_WORLD}')
 #     tests.run(cmd, mp=mp)
 
