@@ -7,25 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# import functools
+import functools
 
-# import power
-# import utilo
-# import utilotest
+import hoverpower
+import utilo
+import utilotest
 
-# import jamer.cat
+import jamer.cat
 
-# small = functools.partial(
-#     utilotest.run_cov,
-#     process='pdfcat',
-#     main=jamer.cat.main,
-#     expect=True,
-# )
+small = functools.partial(
+    utilotest.run_cov,
+    process='pdfcat',
+    main=jamer.cat.main,
+    expect=True,
+)
 
-# def test_pdfcat(td, mp):
-#     source = power.MASTER116_PDF
-#     before = utilo.file_size(source)
-#     outpath = td.tmpdir.join('small.pdf')
-#     small(cmd=f'-o {outpath} {source} 0:2', mp=mp)
-#     after = utilo.file_size(outpath)
-#     assert after < before
+
+def test_pdfcat(td, mp):
+    source = hoverpower.MASTER116_PDF
+    before = utilo.file_size(source)
+    outpath = td.tmpdir.join('small.pdf')
+    small(cmd=f'-o {outpath} {source} 0:2', mp=mp)
+    after = utilo.file_size(outpath)
+    assert after < before
