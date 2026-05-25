@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.2 (2026-05-25)
+
+### Code Style
+
+- **format**: Format code
+  ([`865bbe6`](https://github.com/anaticulae/jamer/commit/865bbe61a87a827e5df02a14aead5a41b8d18dee))
+
+
 ## v1.0.1 (2026-05-02)
 
 ### Chores
