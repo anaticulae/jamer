@@ -13,8 +13,6 @@ from utilotest import td  # pylint:disable=W0611
 
 import jamer
 
-# import jamer
-
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 hoverpower.setup(jamer.ROOT)
